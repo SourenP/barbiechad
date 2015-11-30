@@ -7,6 +7,21 @@ concept—that is, the description of your personas and use scenario(s)—in pdf
 ## Description
 _A brief (one paragraph) description of your class of users._
 
+Four is a web app that generates a playlist from a time-series of values based on a metric.
+
+Metric examples:
+* Tempo
+* Key
+* Duration
+* Time signature
+* Beat structure
+* Downbeats
+* Segments
+* Timbre
+* Pitch
+* Loudness
+* Energy
+* Danceability
 
 ### Class of users
 
