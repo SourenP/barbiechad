@@ -30,9 +30,6 @@ Barbie is a 40 year old woman who lives in New York and attends her local gym in
 
 ## Use Scenarios
 
-_Your two or more use scenarios (one paragraph per use scenario), at least one for each
-persona. Each scenario should describe how that persona would complete some task._
-
 ### Scenario 1
 Chad decides to use BarbieChad to make a prom playlist.  He wants to start with maximum tempo at the beginning of the night and then wind it down with slower songs towards the end. He opens the app and looks over the inputs. He wants to play pop at the prom so he adds the genre from the dropdown list. He then chooses ‘tempo’ as the metric that he wants to graph. He also knows the prom is three hours long so he specifies it in the duration field. Then he adjusts the points in the graph to start off with a high tempo and taper off into a low tempo. Finally, he clicks on the Submit button and looks over the generated playlist. He decides he is satisfied with it and clicks the Save button so he will have easy access to it at his gig.
 
