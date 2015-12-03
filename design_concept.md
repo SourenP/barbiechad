@@ -34,5 +34,15 @@ _Your two or more use scenarios (one paragraph per use scenario), at least one f
 persona. Each scenario should describe how that persona would complete some task._
 
 ### Scenario 1
+Chad decides to use BarbieChad to make a prom playlist.  He wants to start with maximum tempo at the beginning of the night and then wind it down with slower songs towards the end. He opens the app and looks over the inputs. He wants to play pop at the prom so he adds the genre from the dropdown list. He then chooses ‘tempo’ as the metric that he wants to graph. He also knows the prom is three hours long so he specifies it in the duration field. Then he adjusts the points in the graph to start off with a high tempo and taper off into a low tempo. Finally, he clicks on the Submit button and looks over the generated playlist. He decides he is satisfied with it and clicks the Save button so he will have easy access to it at his gig.
+
+![Smaller icon]
+(https://raw.githubusercontent.com/SourenP/four/master/Chad.png)
 
 ### Scenario 2
+Barbie decides to use BarbieChad to create a playlist for her workout session. She opens the app and decides to first plot the graph. She sets the duration of the playlist to 1 hour and the graph scale changes accordingly. She then inputs a bunch of data points to make the graph match her workout intensity. Once the graph is ready she inputs the genre techno, sets the metric to ‘energy’ and clicks the Submit button. The playlist gets generated and she saves it. The next day she comes back and decides to also add rock. So she adds the genre rock and clicks submit again to regenerate the playlist. She saves again and is satisfied this time.
+
+![Smaller icon]
+(https://raw.githubusercontent.com/SourenP/four/master/Barbie.png)
+
+
