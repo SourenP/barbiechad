@@ -3,16 +3,45 @@ var CONSUMER_KEY = "1e3406ea62e381dfd5201f1ec84592a9"
 var SHARED_SECRET = "69HZAfaGTdyyizIoxDW0rA"
 
 $(document).ready(function () {
-  console.log("yolo")
-  getTracks('country', 'tempo', 100)
+  var styles = ['country']
+  var metric = 'tempo'
+  var values = [100, 200, 300]
+  /*
+  getTracks(styles, metric, values, function(tracks) {
+    console.log(tracks);
+  })
+  */
 })
 
-function getTracks(style, metric, value) {
+function getTracks(styles, metric, values, cb) {
+  var style = styles.join()
+  populate(style, metric, values, [], function(tracks) {
+    cb(tracks)
+  })
+}
+
+function populate(style, metric, values, tracks, done) {
+  if (values.length == 0) {
+    done(tracks)
+  }
+  else {
+    getTrack(style, metric, values.pop(), 1, function(response) {
+      if (response.response.songs.length) {
+        tracks.push(response.response.songs[0])
+      } else {
+        tracks.push({})
+      }
+      populate(style, metric, values, tracks, done)
+    });
+  }
+}
+
+function getTrack(style, metric, value, count, cb) {
   var url = "http://developer.echonest.com/api/v4/song/search"
   var data = {
     'api_key': API_KEY,
     'format': 'json',
-    'results': 1,
+    'results': count,
     'style': style
   }
 
@@ -31,7 +60,7 @@ function getTracks(style, metric, value) {
     url: url,
     data: data,
     success: function (response) {
-      console.log(response)
+      cb(response)
     }
   });
 }
