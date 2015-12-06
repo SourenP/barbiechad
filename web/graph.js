@@ -1,5 +1,5 @@
 $(function() {
-    $('#graph').highcharts({
+ var graph = $('#graph').highcharts({
         chart: {
             type: 'spline',
             margin: [70, 50, 60, 80],
@@ -16,9 +16,10 @@ $(function() {
             }
         },
         title: {
-            text: 'BarbieChad'
+            text: ''
         },
         subtitle: {
+            align: 'left',
             text: 'Click the graph area to add a point. Click a point to remove it.'
         },
         xAxis: {
@@ -47,17 +48,16 @@ $(function() {
             enabled: false
         },
         exporting: {
-            buttons: {
-                customButton: {
-                    text: 'Generate Playlist',
-                    onclick: function() {
-                        alert('You pressed the button!');
-                    }
-                },
-                contextButton: {
-                    enabled: false
-                }
-            }
+					buttons: {
+						contextButton: {
+							symbol : "",
+							menuItems: null,
+							text: "Generate Playlist",
+							onclick: function () {
+								alert(this.getCSV());
+							}
+						}
+					}
         },
         plotOptions: {
             series: {
@@ -75,8 +75,8 @@ $(function() {
         },
         series: [{
             data: [
-                [20, 20],
-                [80, 80]
+                [0, 0],
+                [90, 90]
             ]
         }]
     });
