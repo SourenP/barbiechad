@@ -24,6 +24,12 @@ $(document).ready(function () {
   //testing putting tracks on playlist column
   populatePlaylist(styles, metric, values);
 
+  //change player widget when clicking 
+  $('#playlist_results').on('click', 'tr', function (event) {
+      $("#player").html('<iframe src="https://embed.spotify.com/?uri=' + $(this).data("href") + '" width="100%" height="80" frameborder="0" allowtransparency="true"></iframe>');
+  });
+
+
 })
 
 function populatePlaylist(styles, metric, values){
@@ -63,11 +69,15 @@ function populatePlaylist(styles, metric, values){
   })
 }
 
-//change player widget when clicking 
-$('#playlist_results').on('click', 'tr', function (event) {
-    alert('clicked row');
-    $("#player").html('<iframe src="https://embed.spotify.com/?uri=' + $(this).data("href") + '" width="100%" height="80" frameborder="0" allowtransparency="true"></iframe>');
-});
+// //change player widget when clicking 
+// $('#playlist_results').on('click', 'tr', function (event) {
+//     alert("fuck");
+//     $("#player").html('<iframe src="https://embed.spotify.com/?uri=' + $(this).data("href") + '" width="100%" height="80" frameborder="0" allowtransparency="true"></iframe>');
+// });
+
+$("tr").click(function(){
+    console.log('clicked row');
+ });
 
 function getTracks(styles, metric, values, cb) {
   var style = styles.join()
