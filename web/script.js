@@ -3,6 +3,15 @@ var CONSUMER_KEY = "1e3406ea62e381dfd5201f1ec84592a9"
 var SHARED_SECRET = "69HZAfaGTdyyizIoxDW0rA"
 
 $(document).ready(function () {
+
+  // console.log("yolo");
+  // $('.selectpicker').selectpicker();
+
+  // var metricInput = $('#matricSelect option:selected').val()
+  // var genreInputArr = $('#genreSelect option:selected').val()
+  // getTracks('country', 'tempo', 100)
+
+  // var styles = ['country']
   var styles = ['rap']
   var metric = 'tempo'
   var values = [200, 100, 150]
