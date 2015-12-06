@@ -5,7 +5,7 @@ var SHARED_SECRET = "69HZAfaGTdyyizIoxDW0rA"
 $(document).ready(function () {
   var styles = ['rap']
   var metric = 'tempo'
-  var values = [200, 200, 200]
+  var values = [200, 100, 150]
   
   // getTracks(styles, metric, values, function(tracks) {
   //   console.log(tracks);
@@ -18,8 +18,9 @@ $(document).ready(function () {
 })
 
 function populatePlaylist(styles, metric, values){
+
   getTracks(styles, metric, values, function(tracks) {
-    //console.log(tracks);
+    console.log(tracks);
 
     //clear previous results
     $("#playlist_results > tbody > tr").remove();
@@ -28,8 +29,10 @@ function populatePlaylist(styles, metric, values){
     //broken link for now
     try{
       console.log(tracks[0].id);
+      var firstID = tracks[0].tracks[0].foreign_id;
+      console.log(firstID); 
       //4th1RQAelzqgY7wL53UGQt
-      $("#player").html('<iframe src="https://embed.spotify.com/?uri=spotify:track:' + tracks[0].id + '" width="100%" height="80" frameborder="0" allowtransparency="true"></iframe>');
+      $("#player").html('<iframe src="https://embed.spotify.com/?uri=' + firstID + '" width="100%" height="80" frameborder="0" allowtransparency="true"></iframe>');
     }
     catch (TypeError) {
        console.log(TypeError);
@@ -39,9 +42,9 @@ function populatePlaylist(styles, metric, values){
     for (i = 0; i < tracks.length; i++) { 
         var track = tracks[i];
 
-        console.log(track);
+        // console.log(track);
 
-        var row = '<tr data-href="' + track.id + '"><td>' 
+        var row = '<tr data-href="' + track.tracks[0].foreign_id + '"><td>' 
             + track.title + '</td><td>' 
             + track.artist_name + '</td></tr>';
 
@@ -52,8 +55,9 @@ function populatePlaylist(styles, metric, values){
 }
 
 //change player widget when clicking 
-$('#search_results').on('click', 'tr', function (event) {
-    $("#player").html('<iframe src="https://embed.spotify.com/?uri=spotify:track:' + $(this).data("href") + '" width="100%" height="80" frameborder="0" allowtransparency="true"></iframe>');
+$('#playlist_results').on('click', 'tr', function (event) {
+    alert('clicked row');
+    $("#player").html('<iframe src="https://embed.spotify.com/?uri=' + $(this).data("href") + '" width="100%" height="80" frameborder="0" allowtransparency="true"></iframe>');
 });
 
 function getTracks(styles, metric, values, cb) {
@@ -85,7 +89,8 @@ function getTrack(style, metric, value, count, cb) {
     'api_key': API_KEY,
     'format': 'json',
     'results': count,
-    'style': style
+    'style': style,
+    'bucket': ['id:spotify-WW', 'tracks']
   }
 
   // Check if metric is valid
@@ -102,6 +107,7 @@ function getTrack(style, metric, value, count, cb) {
   $.ajax({
     url: url,
     data: data,
+    traditional: true,
     success: function (response) {
       cb(response)
     }
