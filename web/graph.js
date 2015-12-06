@@ -47,7 +47,17 @@ $(function() {
             enabled: false
         },
         exporting: {
-            enabled: true
+            buttons: {
+                customButton: {
+                    text: 'Generate Playlist',
+                    onclick: function() {
+                        alert('You pressed the button!');
+                    }
+                },
+                contextButton: {
+                    enabled: false
+                }
+            }
         },
         plotOptions: {
             series: {
