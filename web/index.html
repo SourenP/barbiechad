@@ -3,8 +3,11 @@
   <head>
     <title>BarbieChad</title>
     	<link rel="stylesheet" type="text/css" href="styles.css">
-      <link href="bootstrap-3.3.5-dist/css/bootstrap.min.css" rel="stylesheet">
+      <link rel="stylesheet" type="text/css" href="bootstrap-3.3.5-dist/css/bootstrap.min.css" rel="stylesheet">
+      <link rel="stylesheet" type="text/css" href="bootstrap-select.min.css"></script>
       <script type="text/javascript" src="jquery-1.11.1.min.js"></script>
+      <script type="text/javascript" src='bootstrap-3.3.5-dist/js/bootstrap.min.js'></script>
+      <script type="text/javascript" src='bootstrap-select.min.js'></script>
       <script type="text/javascript" src='script.js'></script>
   </head>
 
@@ -15,15 +18,50 @@
       <h1> BarbieChad </h1>
 
       <div class="col-md-3">
-
         <div class="row top-buffer">
           <h3> Settings </h3>
-        </div>
+          <div>
+            <form>
+              <fieldset class="form-group">
+                <label for="metricSelect">Metric</label>
+                <select class="selectpicker" id="metricSelect">
+                  <option value = "tempo">Tempo</option>
+                  <option value = "pitch">Pitch</option>
+                  <option value = "loudness">Loudness</option>
+                  <option value = "energy">Energy</option>
+                  <option value = "danceability">Danceability</option>
+                </select>
+              </fieldset>
+              <fieldset class="form-group">
+                <label for="genreSelect">Genre</label>
+                <select class="selectpicker" multiple title='Choose following...' id="genreSelect" data-live-search="true">
+                  <option value="alternative">Alternative</option>
+                  <option value="blues">Blues</option>
+                  <option value="classical">Classical</option>
+                  <option value="country">Country</option>
+                  <option value="dance">Dance</option>
+                  <option value="disco">Disco</option>
+                  <option value="electronic">Electronic</option>
+                  <option value="hip hop">Hip Hop</option>
+                  <option value="pop">Pop</option>
+                  <option value="jazz">Jazz</option>
+                  <option value="rap">Rap</option>
+                  <option value="rock">Rock</option>
+                  <option value="r&b">R&B</option>
+                  <option value="techno">Techno</option>
+                </select>
+              </fieldset>
+              <fieldset class="form-group">
+                <label for="exampleInputEmail1">Duration</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Minutes">
+                <small class="text-muted"></small>
+              </fieldset>
+              <button type="submit" class="btn btn-primary">Submit</button>
+              <a data-toggle="modal" href="#HelpModal" class="btn btn-info">Help</a>
+            </form>
 
-        <div class="row top-buffer">
-          Sugar
+          </div>
         </div>
-
       </div>
 
       <div class="col-md-6">
@@ -50,7 +88,20 @@
 
       </div>
 
-    </div>
+    </div><!-- End of Container -->
 
+    <!-- Modal -->
+    <div id="HelpModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 id="modal-label">Header</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Content.</p>
+                </div>
+            </div> <!--modal-content-->
+        </div> <!--modal-dialog-->
+    </div> <!--modal-->
   </body>
 </html>
