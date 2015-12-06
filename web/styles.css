@@ -6,8 +6,10 @@ body {
   margin-top:20px;
 }
 
-
 form{
 	margin: 2em 2em 2em;
 }
 
+#playlist_results{
+	font-size: small;
+}

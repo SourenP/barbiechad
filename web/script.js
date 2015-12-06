@@ -10,15 +10,45 @@ $(document).ready(function () {
   var genreInputArr = $('#genreSelect option:selected').val()
   getTracks('country', 'tempo', 100)
 
+  var styles = ['country']
+  var metric = 'tempo'
+  var values = [100, 200, 300]
+  getTracks(styles, metric, values, function(tracks) {
+    console.log(tracks);
+  })
 })
 
-function getTracks(style, metric, value) {
+function getTracks(styles, metric, values, cb) {
+  var style = styles.join()
+  populate(style, metric, values, [], function(tracks) {
+    cb(tracks)
+  })
+}
+
+function populate(style, metric, values, tracks, done) {
+  if (values.length == 0) {
+    done(tracks)
+  }
+  else {
+    getTrack(style, metric, values.pop(), 1, function(response) {
+      if (response.response.songs.length) {
+        tracks.push(response.response.songs[0])
+      } else {
+        tracks.push({})
+      }
+      populate(style, metric, values, tracks, done)
+    });
+  }
+}
+
+function getTrack(style, metric, value, count, cb) {
   var url = "http://developer.echonest.com/api/v4/song/search"
   var data = {
     'api_key': API_KEY,
     'format': 'json',
-    'results': 1,
-    'style': style
+    'results': count,
+    'style': style,
+    'bucket': ['id:spotify-WW', 'tracks']
   }
 
   // Check if metric is valid
@@ -35,8 +65,9 @@ function getTracks(style, metric, value) {
   $.ajax({
     url: url,
     data: data,
+    traditional: true,
     success: function (response) {
-      console.log(response)
+      cb(response)
     }
   });
 }
