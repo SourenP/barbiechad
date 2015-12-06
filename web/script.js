@@ -6,11 +6,9 @@ $(document).ready(function () {
   var styles = ['country']
   var metric = 'tempo'
   var values = [100, 200, 300]
-  /*
   getTracks(styles, metric, values, function(tracks) {
     console.log(tracks);
   })
-  */
 })
 
 function getTracks(styles, metric, values, cb) {
@@ -42,7 +40,8 @@ function getTrack(style, metric, value, count, cb) {
     'api_key': API_KEY,
     'format': 'json',
     'results': count,
-    'style': style
+    'style': style,
+    'bucket': ['id:spotify-WW', 'tracks']
   }
 
   // Check if metric is valid
@@ -59,6 +58,7 @@ function getTrack(style, metric, value, count, cb) {
   $.ajax({
     url: url,
     data: data,
+    traditional: true,
     success: function (response) {
       cb(response)
     }
