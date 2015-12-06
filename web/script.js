@@ -3,15 +3,58 @@ var CONSUMER_KEY = "1e3406ea62e381dfd5201f1ec84592a9"
 var SHARED_SECRET = "69HZAfaGTdyyizIoxDW0rA"
 
 $(document).ready(function () {
-  var styles = ['country']
+  var styles = ['rap']
   var metric = 'tempo'
-  var values = [100, 200, 300]
-  /*
-  getTracks(styles, metric, values, function(tracks) {
-    console.log(tracks);
-  })
-  */
+  var values = [200, 200, 200]
+  
+  // getTracks(styles, metric, values, function(tracks) {
+  //   console.log(tracks);
+  // })
+  
+
+  //testing putting tracks on playlist column
+  populatePlaylist(styles, metric, values);
+
 })
+
+function populatePlaylist(styles, metric, values){
+  getTracks(styles, metric, values, function(tracks) {
+    //console.log(tracks);
+
+    //clear previous results
+    $("#playlist_results > tbody > tr").remove();
+    
+    //initialize player to the first search result
+    //broken link for now
+    try{
+      console.log(tracks[0].id);
+      //4th1RQAelzqgY7wL53UGQt
+      $("#player").html('<iframe src="https://embed.spotify.com/?uri=spotify:track:' + tracks[0].id + '" width="100%" height="80" frameborder="0" allowtransparency="true"></iframe>');
+    }
+    catch (TypeError) {
+       console.log(TypeError);
+    }
+
+    //add data to table
+    for (i = 0; i < tracks.length; i++) { 
+        var track = tracks[i];
+
+        console.log(track);
+
+        var row = '<tr data-href="' + track.id + '"><td>' 
+            + track.title + '</td><td>' 
+            + track.artist_name + '</td></tr>';
+
+        $('#playlist_results > tbody:first').append(row); 
+    }
+
+  })
+}
+
+//change player widget when clicking 
+$('#search_results').on('click', 'tr', function (event) {
+    $("#player").html('<iframe src="https://embed.spotify.com/?uri=spotify:track:' + $(this).data("href") + '" width="100%" height="80" frameborder="0" allowtransparency="true"></iframe>');
+});
 
 function getTracks(styles, metric, values, cb) {
   var style = styles.join()
