@@ -14,9 +14,14 @@ function cratePlaylist(styles, metric, values) {
   populatePlaylist(styles, metric, values);
 
   //change player widget when clicking
-  $('#playlist_results').on('click', 'tr', function (event) {
-      $("#player").html('<iframe src="https://embed.spotify.com/?uri=' + $(this).data("href") + '" width="100%" height="80" frameborder="0" allowtransparency="true"></iframe>');
-  });
+  try{
+    $('#playlist_results').on('click', 'tr', function (event) {
+        $("#player").html('<iframe src="https://embed.spotify.com/?uri=' + $(this).data("href") + '" width="100%" height="80" frameborder="0" allowtransparency="true"></iframe>');
+    });
+  }
+  catch (TypeError) {
+       console.log(TypeError);
+  }
 }
 
 function populatePlaylist(styles, metric, values) {
