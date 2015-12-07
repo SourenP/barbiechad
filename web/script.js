@@ -3,20 +3,84 @@ var CONSUMER_KEY = "1e3406ea62e381dfd5201f1ec84592a9"
 var SHARED_SECRET = "69HZAfaGTdyyizIoxDW0rA"
 
 $(document).ready(function () {
-  console.log("yolo");
-  $('.selectpicker').selectpicker();
 
   var metricInput = $('#matricSelect option:selected').val()
   var genreInputArr = $('#genreSelect option:selected').val()
   //getTracks('country', 'tempo', 100)
+  // console.log("yolo");
+  // $('.selectpicker').selectpicker();
 
-  var styles = ['country']
+  // var metricInput = $('#matricSelect option:selected').val()
+  // var genreInputArr = $('#genreSelect option:selected').val()
+  // getTracks('country', 'tempo', 100)
+
+  // var styles = ['country']
+  var styles = ['rap']
   var metric = 'tempo'
-  var values = [100, 200, 300]
+  var values = [200, 100, 150]
+  
+  // getTracks(styles, metric, values, function(tracks) {
+  //   console.log(tracks);
+  // })
+  
+
+  //testing putting tracks on playlist column
+  populatePlaylist(styles, metric, values);
+
+  //change player widget when clicking 
+  $('#playlist_results').on('click', 'tr', function (event) {
+      $("#player").html('<iframe src="https://embed.spotify.com/?uri=' + $(this).data("href") + '" width="100%" height="80" frameborder="0" allowtransparency="true"></iframe>');
+  });
+
+
+})
+
+function populatePlaylist(styles, metric, values){
+
   getTracks(styles, metric, values, function(tracks) {
     console.log(tracks);
+
+    //clear previous results
+    $("#playlist_results > tbody > tr").remove();
+    
+    //initialize player to the first search result
+    //broken link for now
+    try{
+      console.log(tracks[0].id);
+      var firstID = tracks[0].tracks[0].foreign_id;
+      console.log(firstID); 
+      //4th1RQAelzqgY7wL53UGQt
+      $("#player").html('<iframe src="https://embed.spotify.com/?uri=' + firstID + '" width="100%" height="80" frameborder="0" allowtransparency="true"></iframe>');
+    }
+    catch (TypeError) {
+       console.log(TypeError);
+    }
+
+    //add data to table
+    for (i = 0; i < tracks.length; i++) { 
+        var track = tracks[i];
+
+        // console.log(track);
+
+        var row = '<tr data-href="' + track.tracks[0].foreign_id + '"><td>' 
+            + track.title + '</td><td>' 
+            + track.artist_name + '</td></tr>';
+
+        $('#playlist_results > tbody:first').append(row); 
+    }
+
   })
-})
+}
+
+// //change player widget when clicking 
+// $('#playlist_results').on('click', 'tr', function (event) {
+//     alert("fuck");
+//     $("#player").html('<iframe src="https://embed.spotify.com/?uri=' + $(this).data("href") + '" width="100%" height="80" frameborder="0" allowtransparency="true"></iframe>');
+// });
+
+$("tr").click(function(){
+    console.log('clicked row');
+ });
 
 function getTracks(styles, metric, values, cb) {
   var style = styles.join()
