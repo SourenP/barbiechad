@@ -1,7 +1,9 @@
 window.onload = function() {
     $("#submit").click(function() {
-        var metric = document.getElementById('metricSelect').value;
-        var genre = document.getElementById('genreSelect').value;
+        var metric = $('#metricSelect').val()
+        var genre = $('#genreSelect').val()
+        console.log(metric)
+        console.log(genre)
         var graph = $('#graph').highcharts({
             chart: {
                 type: 'spline',
@@ -64,7 +66,12 @@ window.onload = function() {
                         menuItems: null,
                         text: "Generate Playlist",
                         onclick: function() {
-                            alert(this.getCSV());
+                          var values = []
+                          var lines = this.getCSV().split('\n');
+                          for(var i = 1;i < lines.length;i++){
+                            values.push(parseInt(lines[i].split(',')[1]))
+                          }
+                          cratePlaylist(genre, metric, values);
                         }
                     }
                 }
