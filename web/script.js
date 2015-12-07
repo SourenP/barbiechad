@@ -37,8 +37,7 @@ function populatePlaylist(styles, metric, values) {
   getTracks(styles, metric, values, function(tracks) {
     console.log(tracks);
 
-    //clear previous results
-    $("#playlist_results > tbody > tr").remove();
+    
 
     //initialize player to the first search result
     //broken link for now
@@ -86,6 +85,8 @@ var progress_bar_increments
 function getTracks(styles, metric, values, cb) {
   var style = styles.join()
 
+  //clear previous results
+  $("#playlist_results > tbody > tr").remove();
   //reset progress bar
   $('.progress-bar').css('width','0%');
   current_width_percent = 0
@@ -132,11 +133,12 @@ function getTrack(style, metric, value, count, cb) {
     'format': 'json',
     'results': count,
     'style': style,
-    'bucket': ['id:spotify-US', 'tracks']
+    'bucket': ['id:spotify-WW', 'tracks']
   }
 
   // Check if metric is valid
   min_max = getRange(metric, value)
+  console.log(min_max)
   if (min_max.length == 0) {
     console.error("Invalid metric")
     return

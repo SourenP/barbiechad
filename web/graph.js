@@ -85,7 +85,7 @@ window.onload = function() {
                           var values = [];
                           var lines = this.getCSV().split('\n');
                           for(var i = 1;i < lines.length;i++){
-                            values.push(parseInt(lines[i].split(',')[1]));
+                            values.push(parseFloat(lines[i].split(',')[1]));
                           }
                           cratePlaylist(genre, metric, values);
                         }
