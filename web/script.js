@@ -6,6 +6,12 @@ $(document).ready(function () {
   console.log("ready")
 })
 
+function ErrMsg(msg){
+  var message = "<strong>Oh snap!</strong><a href='#'' class='alert-link'>"+msg + "and try submitting again."
+  $( "#errorMsg").append(message);
+  $('#errorMsg').show();
+}
+
 function cratePlaylist(styles, metric, values) {
   console.log(styles)
   console.log(metric)
