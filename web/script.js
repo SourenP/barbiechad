@@ -8,7 +8,7 @@ $(document).ready(function () {
 
   var metricInput = $('#matricSelect option:selected').val()
   var genreInputArr = $('#genreSelect option:selected').val()
-  getTracks('country', 'tempo', 100)
+  //getTracks('country', 'tempo', 100)
 
   var styles = ['country']
   var metric = 'tempo'
