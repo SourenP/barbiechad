@@ -1,9 +1,25 @@
 window.onload = function() {
     $("#submit").click(function() {
-        var metric = $('#metricSelect').val()
-        var genre = $('#genreSelect').val()
-        console.log(metric)
-        console.log(genre)
+        var metric = $('#metricSelect').val();
+        var genre = $('#genreSelect').val();
+        console.log(metric);
+        console.log(genre);
+        var min;
+        var max;
+        switch(metric) {
+					case "tempo":
+						min = 0; max = 500;
+						break;
+					case "loudness":
+						min = -100; max = 100;
+						break;
+					case "energy":
+						min = 0.0; max = 1.0;
+						break;
+					case "danceability":
+						min = 0.0; max = 1.0;
+						break;
+        }
         var graph = $('#graph').highcharts({
             chart: {
                 type: 'spline',
@@ -38,8 +54,8 @@ window.onload = function() {
                 minPadding: 0.2,
                 maxPadding: 0.2,
                 maxZoom: 60,
-                min: 0,
-                max: 100
+                min: min,
+                max: max
             },
             yAxis: {
                 title: {
@@ -53,8 +69,8 @@ window.onload = function() {
                     width: 1,
                     color: '#808080'
                 }],
-                min: 0,
-                max: 100
+                min: min,
+                max: max
             },
             legend: {
                 enabled: false
@@ -66,10 +82,10 @@ window.onload = function() {
                         menuItems: null,
                         text: "Generate Playlist",
                         onclick: function() {
-                          var values = []
+                          var values = [];
                           var lines = this.getCSV().split('\n');
                           for(var i = 1;i < lines.length;i++){
-                            values.push(parseInt(lines[i].split(',')[1]))
+                            values.push(parseInt(lines[i].split(',')[1]));
                           }
                           cratePlaylist(genre, metric, values);
                         }
@@ -93,7 +109,7 @@ window.onload = function() {
             series: [{
                 data: [
                     [0, 0],
-                    [90, 90]
+                    [max*.9, max*.9]
                 ]
             }]
         });
