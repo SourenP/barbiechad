@@ -4,6 +4,8 @@ var SHARED_SECRET = "69HZAfaGTdyyizIoxDW0rA"
 
 $(document).ready(function () {
   console.log("ready")
+  //I don't know how to do this on HTML :(
+  $('.progress').hide();
 })
 
 function ErrMsg(msg){
@@ -80,15 +82,29 @@ $("tr").click(function(){
     console.log('clicked row');
  });
 
+var progress_bar_increments
 function getTracks(styles, metric, values, cb) {
   var style = styles.join()
+
+  //reset progress bar
+  $('.progress-bar').css('width','0%');
+  current_width_percent = 0
+  //calculate new progress increments per track
+  progress_bar_increments = 100/values.length;
+  console.log("progress increment: " + progress_bar_increments);
+  //show progress bar
+  $('.progress').show();
+
   populate(style, metric, values, [], function(tracks) {
     cb(tracks)
   })
 }
 
+var current_width_percent = 0;
 function populate(style, metric, values, tracks, done) {
   if (values.length == 0) {
+    //hide progress bar when all tracks have been found
+    $('.progress').hide();
     done(tracks)
   }
   else {
@@ -98,6 +114,12 @@ function populate(style, metric, values, tracks, done) {
       } else {
         tracks.push({})
       }
+
+      //make progress bar move accordingly
+      $('.progress-bar').css('width', current_width_percent + progress_bar_increments + '%');
+      current_width_percent = current_width_percent + progress_bar_increments;
+      console.log("current progress: " + current_width_percent);
+
       populate(style, metric, values, tracks, done)
     });
   }
