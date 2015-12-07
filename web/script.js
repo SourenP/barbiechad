@@ -127,11 +127,12 @@ function getTrack(style, metric, value, count, cb) {
     'format': 'json',
     'results': count,
     'style': style,
-    'bucket': ['id:spotify-US', 'tracks']
+    'bucket': ['id:spotify-WW', 'tracks']
   }
 
   // Check if metric is valid
   min_max = getRange(metric, value)
+  console.log(min_max)
   if (min_max.length == 0) {
     console.error("Invalid metric")
     return
