@@ -126,8 +126,7 @@ function getTrack(style, metric, value, count, cb) {
     'format': 'json',
     'results': count,
     'style': style,
-    'sort': 'song_hotttnesss-desc',
-    'bucket': ['id:spotify-US', 'tracks']
+    'bucket': ['id:spotify-WW', 'tracks']
   }
 
   // Check if metric is valid
