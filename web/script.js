@@ -151,9 +151,12 @@ function getTrack(style, metric, value, count, cb) {
 }
 
 function getRange(metric, value) {
+  range = 15/100
   switch (metric) {
     case "tempo":
-      margin = 500*10/100
+      if (value <= 0) value = 0.01;
+      if (value >= 500) value = 499.99;
+      margin = 500*range
       min = value - margin
       if (min <= 0) min = 0.01;
       max = value + margin
@@ -161,7 +164,9 @@ function getRange(metric, value) {
       return [min, max]
       break;
     case "loudness":
-      margin = 200*10/100
+      if (value <= -100) value = -99.99;
+      if (value >= 100) value = 99.99;
+      margin = 200*range
       min = value - margin
       if (min <= -100) min = -99.99;
       max = value + margin
@@ -169,7 +174,9 @@ function getRange(metric, value) {
       return [min, max]
       break;
     case "energy":
-      margin = 1*10/100
+      if (value <= 0) value = 0.01;
+      if (value >= 1) value = 0.99;
+      margin = 1*range
       min = value - margin
       if (min <= 0) min = 0.01;
       max = value + margin
@@ -177,7 +184,9 @@ function getRange(metric, value) {
       return [min, max]
       break;
     case "danceability":
-      margin = 1*10/100
+      if (value <= 0) value = 0.01;
+      if (value >= 1) value = 0.99;
+      margin = 1*range
       min = value - margin
       if (min <= 0) min = 0.01;
       max = value + margin
