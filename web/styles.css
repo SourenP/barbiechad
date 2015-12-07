@@ -3,13 +3,39 @@ body {
 }
 
 .top-buffer {
-  margin-top:20px;
+  margin:20px 20px 20px;
+  padding: 2em 2em 2em;
+  height: 100vh;
 }
 
-form{
+/*form{
 	margin: 2em 2em 2em;
-}
+}*/
 
 #playlist_results{
 	font-size: small;
+	margin-left: 10px;
 }
+
+#player{
+	margin-left: 10px;
+}
+
+/*.spotifyblack_background{
+	background-color: #282828
+}*/
+
+/*.white_text{
+	color: white;
+}*/
+
+div.shadow {
+	border: 0px solid #ccc;
+	}
+
+div.shadow:hover {
+	-moz-box-shadow: 0 0 2em rgba(0, 0, 0, .5);
+	-webkit-box-shadow: 0 0 2em rgba(0, 0, 0, .5);
+	box-shadow: 0 0 2em rgba(0, 0, 0, .5);
+	}
+
