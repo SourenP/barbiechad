@@ -12,4 +12,18 @@ form{
 
 #playlist_results{
 	font-size: small;
+	margin-left: 10px;
 }
+
+#player{
+	margin-left: 10px;
+}
+
+.spotifyblack_background{
+	background-color: #282828
+}
+
+.white_text{
+	color: white;
+}
+
