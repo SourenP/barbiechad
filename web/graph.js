@@ -35,7 +35,9 @@ window.onload = function() {
                 gridLineWidth: 1,
                 minPadding: 0.2,
                 maxPadding: 0.2,
-                maxZoom: 60
+                maxZoom: 60,
+                min: 0,
+                max: 100
             },
             yAxis: {
                 title: {
@@ -48,7 +50,9 @@ window.onload = function() {
                     value: 0,
                     width: 1,
                     color: '#808080'
-                }]
+                }],
+                min: 0,
+                max: 100
             },
             legend: {
                 enabled: false
