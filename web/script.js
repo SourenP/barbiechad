@@ -46,7 +46,7 @@ function populatePlaylist(styles, metric, values) {
     for (i = 0; i < tracks.length; i++) {
       var track = tracks[i];
       if (Object.keys(track).length && track.tracks.length) {
-        var row = '<tr data-href="' + track.tracks[0].foreign_id + '"><td>'
+        var row = '<tr data-href="' + track.tracks[0].foreign_id.replace('-US', '') + '"><td>'
             + track.title + '</td><td>'
             + track.artist_name + '</td></tr>';
       } else {
@@ -99,7 +99,7 @@ function getTrack(style, metric, value, count, cb) {
     'format': 'json',
     'results': count,
     'style': style,
-    'bucket': ['id:spotify', 'tracks']
+    'bucket': ['id:spotify-US', 'tracks']
   }
 
   // Check if metric is valid
