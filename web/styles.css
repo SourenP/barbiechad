@@ -29,6 +29,7 @@ body {
 	color: white;
 }*/
 
+/*
 div.shadow {
 	border: 0px solid #ccc;
 	border-radius:1em;
@@ -39,6 +40,8 @@ div.shadow:hover {
 	-webkit-box-shadow: 0 0 2em rgba(0, 0, 0, .5);
 	box-shadow: 0 0 2em rgba(0, 0, 0, .5);
 	}
+
+*/
 
 #circle {
 	width: 60px;
@@ -65,5 +68,3 @@ div.shadow:hover {
 	border-bottom: 60px solid #5FB2B0;
 	margin:1em;
 }
-
-

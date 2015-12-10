@@ -2,8 +2,7 @@ window.onload = function() {
     $("#submit").click(function() {
         var metric = $('#metricSelect').val();
         var genre = $('#genreSelect').val();
-        console.log(metric);
-        console.log(genre);
+        var artists = $('#artistSelect').val();
         var min;
         var max;
         switch(metric) {
@@ -87,7 +86,7 @@ window.onload = function() {
                           for(var i = 1;i < lines.length;i++){
                             values.push(parseFloat(lines[i].split(',')[1]));
                           }
-                          cratePlaylist(genre, metric, values);
+                          cratePlaylist(artists.split(','), metric, values);
                         }
                     }
                 }
