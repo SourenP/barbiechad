@@ -97,7 +97,7 @@ function populatePlaylistTable(playlist, values){
       var row = '<tr data-href="NOTFOUND"><td>'
           + 'Song Not Found' + '</td><td>'
           + '' + '</td><td>'
-          + values[i] + '</td></tr>';
+          + roundToTwoDec(values[i]) + '</td></tr>';
     }
     else{
       var song = playlist[i];
@@ -111,12 +111,16 @@ function populatePlaylistTable(playlist, values){
       var row = '<tr data-href="https://embed.spotify.com/?uri=' + song.uri + '"><td>'
           + song.title + '</td><td>'
           + song.artist_name + '</td><td>'
-          + values[i] + '</td></tr>';
+          + roundToTwoDec(values[i]) + '</td></tr>';
 
     }
     console.log('appending row');
     $('#playlist_results > tbody:first').append(row);
   }
+}
+
+function roundToTwoDec(num){
+  return Math.round(num * 100) / 100;
 }
 
 function getBucket(value, metric) {
