@@ -49,7 +49,73 @@ function cratePlaylist(artists,  metric, values) {
     // GENERATED PLAYLIST!
     console.log(playlist)
 
+    //Add the metric type to the table after capitalizing it
+    $("#metric").text(firstToUpperCase(metric));
+
+    //Generate table from playlist
+    populatePlaylistTable(playlist, metric, values);
+
   });
+}
+
+//capitalize first letter of a string
+function firstToUpperCase( str ) {
+    return str.substr(0, 1).toUpperCase() + str.substr(1);
+}
+
+function populatePlaylistTable(playlist, metric, values){
+  console.log('in populatePlaylistTable');
+  //add data to table
+  for (i = 0; i < playlist.length; i++) {
+    //if the song is null
+    if(jQuery.isEmptyObject(playlist[i])){
+      console.log('song not here');
+      var row = '<tr data-href="#"><td>'
+          + 'Song Not Found' + '</td><td>'
+          + '' + '</td><td>'
+          + values[i] + '</td></tr>';
+    }
+    else{
+      var song = playlist[i].response.songs[0];
+      console.log(song);
+      var row = '<tr><td>'
+          + song.title + '</td><td>'
+          + song.artist_name + '</td><td>';
+
+      //switch statement to add the value of the correct metric
+      switch(metric) {
+        case 'tempo':
+          row += song.audio_summary.tempo + '</td></tr>';
+          break;
+        case 'loudness':
+          row += song.audio_summary.loudness + '</td></tr>';
+          break;
+        case 'energy':
+          row += song.audio_summary.energy + '</td></tr>';
+          break;
+        case 'danceability':
+          row += song.audio_summary.danceability + '</td></tr>';
+          break;
+        default:
+          console.log("OH NO UNKNOWN METRIC :(")
+          break;
+      }
+
+    }
+    console.log('appending row');
+    $('#playlist_results > tbody:first').append(row);
+    
+    // if (Object.keys(track).length && track.tracks.length) {
+    //   var row = '<tr data-href="' + track.tracks[0].foreign_id.replace('-US', '') + '"><td>'
+    //       + track.title + '</td><td>'
+    //       + track.artist_name + '</td></tr>';
+    // } else {
+    //   var row = '<tr data-href="#"><td>'
+    //       + 'shrug' + '</td><td>'
+    //       + 'shrug' + '</td></tr>';
+    // }
+    // $('#playlist_results > tbody:first').append(row);
+  }
 }
 
 function getBucket(value, metric) {

@@ -39,25 +39,25 @@
                 <h3> Settings </h3>
                 <div>
                     <form id='searchform'>
-                        <fieldset class="form-group">
-                            <label for="genreSelect">Genre</label>
-                            <select class="selectpicker" multiple title='Choose following...' id="genreSelect" data-live-search="true">
-                                <option value="alternative">Alternative</option>
-                                <option value="blues">Blues</option>
-                                <option value="classical">Classical</option>
-                                <option value="country">Country</option>
-                                <option value="dance">Dance</option>
-                                <option value="disco">Disco</option>
-                                <option value="electronic">Electronic</option>
-                                <option value="hip hop">Hip Hop</option>
-                                <option value="pop">Pop</option>
-                                <option value="jazz">Jazz</option>
-                                <option value="rap">Rap</option>
-                                <option value="rock">Rock</option>
-                                <option value="r&b">R&B</option>
-                                <option value="techno">Techno</option>
-                            </select>
-                        </fieldset>
+                        <!--<fieldset class="form-group">-->
+                            <!--<label for="genreSelect">Genre</label>-->
+                            <!--<select class="selectpicker" multiple title='Choose following...' id="genreSelect" data-live-search="true">-->
+                                <!--<option value="alternative">Alternative</option>-->
+                                <!--<option value="blues">Blues</option>-->
+                                <!--<option value="classical">Classical</option>-->
+                                <!--<option value="country">Country</option>-->
+                                <!--<option value="dance">Dance</option>-->
+                                <!--<option value="disco">Disco</option>-->
+                                <!--<option value="electronic">Electronic</option>-->
+                                <!--<option value="hip hop">Hip Hop</option>-->
+                                <!--<option value="pop">Pop</option>-->
+                                <!--<option value="jazz">Jazz</option>-->
+                                <!--<option value="rap">Rap</option>-->
+                                <!--<option value="rock">Rock</option>-->
+                                <!--<option value="r&b">R&B</option>-->
+                                <!--<option value="techno">Techno</option>-->
+                            <!--</select>-->
+                        <!--</fieldset>-->
                         <fieldset class="form-group">
                             <label for="artist">Artist</label>
                             <input type="search" class="form-control" id="artistSelect" placeholder="Kanye">
@@ -76,14 +76,13 @@
                     <form id='metricform' class="form-inline">
                         <fieldset class="form-group">
                             <label for="metricSelect">Metric</label>
-                            <select class="selectpicker" id="metricSelect">
+                            <select class="selectpicker" id="metricSelect" onchange="metricChange()">
                                 <option value="tempo">Tempo</option>
                                 <option value="loudness">Loudness</option>
                                 <option value="energy">Energy</option>
                                 <option value="danceability">Danceability</option>
                             </select>
                         </fieldset>
-                        <button type="button" id="metricsubmit" class="btn btn-primary">Submit</button>
 										</form>
             </div>
         </div>
@@ -100,8 +99,9 @@
               <table id="playlist_results" class="table table-hover">
                 <thead>
                   <tr>
-                      <th data-field="track">Track</th>
-                      <th data-field="artist">Artist</th>
+                        <th data-field="track">Track</th>
+                        <th data-field="artist">Artist</th>
+                        <th id="metric" data-field="metric"></th>
                   </tr>
                   </thead>
                 <tbody>
