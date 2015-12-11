@@ -42,6 +42,11 @@ div.shadow:hover {
 	}
 
 */
+#header{
+	width:100%;
+	height: auto;
+	background-size: 100% auto !important
+}
 
 #circle {
 	width: 60px;
