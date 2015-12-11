@@ -53,7 +53,17 @@ function cratePlaylist(artists,  metric, values) {
     $("#metric").text(firstToUpperCase(metric));
 
     //Generate table from playlist
-    populatePlaylistTable(playlist, metric, values);
+    populatePlaylistTable(playlist, values);
+
+    //change player widget when clicking
+    try{
+      $('#playlist_results').on('click', 'tr', function (event) {
+          $("#player").html('<iframe src=' + $(this).data("href") + ' width="100%" height="80" frameborder="0" allowtransparency="true"></iframe>');
+      });
+    }
+    catch (TypeError) {
+         console.log(TypeError);
+    }
 
   });
 }
@@ -63,7 +73,9 @@ function firstToUpperCase( str ) {
     return str.substr(0, 1).toUpperCase() + str.substr(1);
 }
 
-function populatePlaylistTable(playlist, metric, values){
+function populatePlaylistTable(playlist, values){
+  console.log('values');
+  console.log(values);
   console.log('in populatePlaylistTable');
 
   //Player added initialized to false, changed to true when first nonempty song is put on player
@@ -92,28 +104,10 @@ function populatePlaylistTable(playlist, metric, values){
         //set to true
         playerInitialized = true;
       }
-      var row = '<tr data-href="#"><td>'
+      var row = '<tr data-href="https://embed.spotify.com/?uri=' + song.uri + '"><td>'
           + song.title + '</td><td>'
-          + song.artist_name + '</td><td>';
-
-      //switch statement to add the value of the correct metric
-      switch(metric) {
-        case 'tempo':
-          row += song.audio_summary.tempo + '</td></tr>';
-          break;
-        case 'loudness':
-          row += song.audio_summary.loudness + '</td></tr>';
-          break;
-        case 'energy':
-          row += song.audio_summary.energy + '</td></tr>';
-          break;
-        case 'danceability':
-          row += song.audio_summary.danceability + '</td></tr>';
-          break;
-        default:
-          console.log("OH NO UNKNOWN METRIC :(")
-          break;
-      }
+          + song.artist_name + '</td><td>'
+          + values[i] + '</td></tr>';
 
     }
     console.log('appending row');
