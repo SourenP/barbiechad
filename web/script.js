@@ -58,13 +58,17 @@ function cratePlaylist(artists,  metric, values) {
     //change player widget when clicking
     try{
       $('#playlist_results').on('click', 'tr', function (event) {
+        var trackURL = $(this).data("href");
+        //if you're not clicking on an empty track...
+        if(trackURL !== "NOTFOUND"){
+          //update the player to the clicked track
           $("#player").html('<iframe src=' + $(this).data("href") + ' width="100%" height="80" frameborder="0" allowtransparency="true"></iframe>');
+        }
       });
     }
     catch (TypeError) {
          console.log(TypeError);
     }
-
   });
 }
 
@@ -90,7 +94,7 @@ function populatePlaylistTable(playlist, values){
     //if the song is null
     if(jQuery.isEmptyObject(playlist[i])){
       console.log('song not here');
-      var row = '<tr data-href="#"><td>'
+      var row = '<tr data-href="NOTFOUND"><td>'
           + 'Song Not Found' + '</td><td>'
           + '' + '</td><td>'
           + values[i] + '</td></tr>';
