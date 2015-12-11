@@ -28,8 +28,12 @@ function cratePlaylist(artists,  metric, values) {
   getTracks(artists, [], function(tracks) {
     for (var i in tracks) {
       var track = tracks[i]
-      var value = track.response.songs[0].audio_summary[metric]
-      buckets[getBucket(value, metric)].push(track)
+      if (track.response.songs) {
+        var value = track.response.songs[0].audio_summary[metric]
+        buckets[getBucket(value, metric)].push(track)
+      } else {
+        console.warn("Couldn't use this track: ", track)
+      }
     }
 
     // Get a track for each value from buckets
@@ -40,7 +44,7 @@ function cratePlaylist(artists,  metric, values) {
       if (bucket.length) {
         track = bucket[Math.floor(Math.random()*bucket.length)];
       } else {
-        console.log('No matching track :(')
+        console.warn('No matching track for ', values[i])
         track = {}
       }
       playlist.push(track)
@@ -204,12 +208,11 @@ function getSummaries(ids, summaries, cb) {
 }
 
 function getSummary(id ,cb) {
-  var rosetta_id = 'spotify:track:' + id
   var url = "http://developer.echonest.com/api/v4/song/profile"
   var data = {
     'api_key': API_KEY,
     'format': 'json',
-    'track_id': rosetta_id,
+    'track_id': id,
     'bucket': ['audio_summary', 'id:spotify']
   }
 
@@ -260,7 +263,7 @@ function topTrackIds(artist_id, cb) {
     success: function (response) {
       var ids = []
       for (var key in response.tracks) {
-          ids.push(response.tracks[key].id);
+          ids.push(response.tracks[key].uri);
       }
       cb(ids)
     }

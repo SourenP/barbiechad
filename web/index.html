@@ -40,15 +40,6 @@
                 <div>
                     <form id='searchform'>
                         <fieldset class="form-group">
-                            <label for="metricSelect">Metric</label>
-                            <select class="selectpicker" id="metricSelect">
-                                <option value="tempo">Tempo</option>
-                                <option value="loudness">Loudness</option>
-                                <option value="energy">Energy</option>
-                                <option value="danceability">Danceability</option>
-                            </select>
-                        </fieldset>
-                        <fieldset class="form-group">
                             <label for="genreSelect">Genre</label>
                             <select class="selectpicker" multiple title='Choose following...' id="genreSelect" data-live-search="true">
                                 <option value="alternative">Alternative</option>
@@ -71,16 +62,29 @@
                             <label for="artist">Artist</label>
                             <input type="search" class="form-control" id="artistSelect" placeholder="Kanye">
                         </fieldset>
-                        <button type="button" id="submit" class="btn btn-primary">Submit</button>
+                        <button type="button" id="searchsubmit" class="btn btn-primary">Submit</button>
                         <a data-toggle="modal" href="#HelpModal" class="btn btn-info">Help</a>
                     </form>
                 </div>
             </div>
         </div>
-        <div class="col-md-12" id="graph">
+        <div class="col-md-12">
             <div class="row top-buffer shadow">
                 <h3> Graph </h3>
                 <div id="graph" style="min-width: 310px; height: 400px; max-width: 700px; margin: 0 auto"></div>
+
+                    <form id='metricform' class="form-inline">
+                        <fieldset class="form-group">
+                            <label for="metricSelect">Metric</label>
+                            <select class="selectpicker" id="metricSelect">
+                                <option value="tempo">Tempo</option>
+                                <option value="loudness">Loudness</option>
+                                <option value="energy">Energy</option>
+                                <option value="danceability">Danceability</option>
+                            </select>
+                        </fieldset>
+                        <button type="button" id="metricsubmit" class="btn btn-primary">Submit</button>
+										</form>
             </div>
         </div>
         <div class="col-md-12">
