@@ -65,6 +65,14 @@ function firstToUpperCase( str ) {
 
 function populatePlaylistTable(playlist, metric, values){
   console.log('in populatePlaylistTable');
+
+  //Player added initialized to false, changed to true when first nonempty song is put on player
+  var playerInitialized = false;
+
+
+  //clear previous results
+  $("#playlist_results > tbody > tr").remove();
+
   //add data to table
   for (i = 0; i < playlist.length; i++) {
     //if the song is null
@@ -76,9 +84,15 @@ function populatePlaylistTable(playlist, metric, values){
           + values[i] + '</td></tr>';
     }
     else{
-      var song = playlist[i].response.songs[0];
+      var song = playlist[i];
       console.log(song);
-      var row = '<tr><td>'
+      //if player hasn't been initialized yet...
+      if(!playerInitialized){
+        $("#player").html('<iframe src="https://embed.spotify.com/?uri=' + song.uri + '" width="100%" height="80" frameborder="0" allowtransparency="true"></iframe>');
+        //set to true
+        playerInitialized = true;
+      }
+      var row = '<tr data-href="#"><td>'
           + song.title + '</td><td>'
           + song.artist_name + '</td><td>';
 
@@ -104,17 +118,6 @@ function populatePlaylistTable(playlist, metric, values){
     }
     console.log('appending row');
     $('#playlist_results > tbody:first').append(row);
-    
-    // if (Object.keys(track).length && track.tracks.length) {
-    //   var row = '<tr data-href="' + track.tracks[0].foreign_id.replace('-US', '') + '"><td>'
-    //       + track.title + '</td><td>'
-    //       + track.artist_name + '</td></tr>';
-    // } else {
-    //   var row = '<tr data-href="#"><td>'
-    //       + 'shrug' + '</td><td>'
-    //       + 'shrug' + '</td></tr>';
-    // }
-    // $('#playlist_results > tbody:first').append(row);
   }
 }
 
