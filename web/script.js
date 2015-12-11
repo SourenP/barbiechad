@@ -28,12 +28,8 @@ function cratePlaylist(artists,  metric, values) {
   getTracks(artists, [], function(tracks) {
     for (var i in tracks) {
       var track = tracks[i]
-      if (track.response.songs) {
-        var value = track.response.songs[0].audio_summary[metric]
-        buckets[getBucket(value, metric)].push(track)
-      } else {
-        console.warn("Couldn't use this track: ", track)
-      }
+      var value = track.audio_summary[metric]
+      buckets[getBucket(value, metric)].push(track)
     }
 
     // Get a track for each value from buckets
@@ -57,8 +53,22 @@ function cratePlaylist(artists,  metric, values) {
     $("#metric").text(firstToUpperCase(metric));
 
     //Generate table from playlist
-    populatePlaylistTable(playlist, metric, values);
+    populatePlaylistTable(playlist, values);
 
+    //change player widget when clicking
+    try{
+      $('#playlist_results').on('click', 'tr', function (event) {
+        var trackURL = $(this).data("href");
+        //if you're not clicking on an empty track...
+        if(trackURL !== "NOTFOUND"){
+          //update the player to the clicked track
+          $("#player").html('<iframe src=' + $(this).data("href") + ' width="100%" height="80" frameborder="0" allowtransparency="true"></iframe>');
+        }
+      });
+    }
+    catch (TypeError) {
+         console.log(TypeError);
+    }
   });
 }
 
@@ -67,58 +77,45 @@ function firstToUpperCase( str ) {
     return str.substr(0, 1).toUpperCase() + str.substr(1);
 }
 
-function populatePlaylistTable(playlist, metric, values){
+function populatePlaylistTable(playlist, values){
+  console.log('values');
+  console.log(values);
   console.log('in populatePlaylistTable');
+
+  //Player added initialized to false, changed to true when first nonempty song is put on player
+  var playerInitialized = false;
+
+
+  //clear previous results
+  $("#playlist_results > tbody > tr").remove();
+
   //add data to table
   for (i = 0; i < playlist.length; i++) {
     //if the song is null
     if(jQuery.isEmptyObject(playlist[i])){
       console.log('song not here');
-      var row = '<tr data-href="#"><td>'
+      var row = '<tr data-href="NOTFOUND"><td>'
           + 'Song Not Found' + '</td><td>'
           + '' + '</td><td>'
           + values[i] + '</td></tr>';
     }
     else{
-      var song = playlist[i].response.songs[0];
+      var song = playlist[i];
       console.log(song);
-      var row = '<tr><td>'
-          + song.title + '</td><td>'
-          + song.artist_name + '</td><td>';
-
-      //switch statement to add the value of the correct metric
-      switch(metric) {
-        case 'tempo':
-          row += song.audio_summary.tempo + '</td></tr>';
-          break;
-        case 'loudness':
-          row += song.audio_summary.loudness + '</td></tr>';
-          break;
-        case 'energy':
-          row += song.audio_summary.energy + '</td></tr>';
-          break;
-        case 'danceability':
-          row += song.audio_summary.danceability + '</td></tr>';
-          break;
-        default:
-          console.log("OH NO UNKNOWN METRIC :(")
-          break;
+      //if player hasn't been initialized yet...
+      if(!playerInitialized){
+        $("#player").html('<iframe src="https://embed.spotify.com/?uri=' + song.uri + '" width="100%" height="80" frameborder="0" allowtransparency="true"></iframe>');
+        //set to true
+        playerInitialized = true;
       }
+      var row = '<tr data-href="https://embed.spotify.com/?uri=' + song.uri + '"><td>'
+          + song.title + '</td><td>'
+          + song.artist_name + '</td><td>'
+          + values[i] + '</td></tr>';
 
     }
     console.log('appending row');
     $('#playlist_results > tbody:first').append(row);
-    
-    // if (Object.keys(track).length && track.tracks.length) {
-    //   var row = '<tr data-href="' + track.tracks[0].foreign_id.replace('-US', '') + '"><td>'
-    //       + track.title + '</td><td>'
-    //       + track.artist_name + '</td></tr>';
-    // } else {
-    //   var row = '<tr data-href="#"><td>'
-    //       + 'shrug' + '</td><td>'
-    //       + 'shrug' + '</td></tr>';
-    // }
-    // $('#playlist_results > tbody:first').append(row);
   }
 }
 
@@ -201,8 +198,13 @@ function getSummaries(ids, summaries, cb) {
     cb(summaries)
     return
   }
-  getSummary(ids.pop(), function(summary) {
-    summaries.push(summary);
+  var id = ids.pop()
+  getSummary(id, function(summary) {
+    if (summary.response.songs) {
+      var summary = summary.response.songs[0]
+      summary["uri"] = id;
+      summaries.push(summary);
+    }
     getSummaries(ids, summaries, cb)
   })
 }
