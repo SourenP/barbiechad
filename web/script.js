@@ -28,12 +28,8 @@ function cratePlaylist(artists,  metric, values) {
   getTracks(artists, [], function(tracks) {
     for (var i in tracks) {
       var track = tracks[i]
-      if (track.response.songs) {
-        var value = track.response.songs[0].audio_summary[metric]
-        buckets[getBucket(value, metric)].push(track)
-      } else {
-        console.warn("Couldn't use this track: ", track)
-      }
+      var value = track.audio_summary[metric]
+      buckets[getBucket(value, metric)].push(track)
     }
 
     // Get a track for each value from buckets
@@ -135,8 +131,13 @@ function getSummaries(ids, summaries, cb) {
     cb(summaries)
     return
   }
-  getSummary(ids.pop(), function(summary) {
-    summaries.push(summary);
+  var id = ids.pop()
+  getSummary(id, function(summary) {
+    if (summary.response.songs) {
+      var summary = summary.response.songs[0]
+      summary["uri"] = id;
+      summaries.push(summary);
+    }
     getSummaries(ids, summaries, cb)
   })
 }
