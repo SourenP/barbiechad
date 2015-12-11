@@ -1,8 +1,12 @@
 window.onload = function() {
-    $("#submit").click(function() {
+	var genre;
+	var artists;
+		$("#searchsubmit").click(function() {
+        genre = $('#genreSelect').val();
+        artists = $('#artistSelect').val();
+		});
+    $("#metricsubmit").click(function() {
         var metric = $('#metricSelect').val();
-        var genre = $('#genreSelect').val();
-        var artists = $('#artistSelect').val();
         var min;
         var max;
         switch(metric) {
@@ -108,7 +112,7 @@ window.onload = function() {
             series: [{
                 data: [
                     [0, 0],
-                    [max*.9, max*.9]
+                    [max*0.9, max*0.9]
                 ]
             }]
         });
