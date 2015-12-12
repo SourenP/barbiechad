@@ -17,7 +17,22 @@ function ErrMsg(msg){
   $('#errorMsg').show();
 }
 
+var progress_bar_increments = 0;
+var current_width_percent = 0;
+
 function cratePlaylist(artists,  metric, values) {
+  console.log('starting progress bar')
+  //clear previous results on table
+  $("#playlist_results > tbody > tr").remove();
+  //reset progress bar
+  $('.progress-bar').css('width','0%');
+  current_width_percent = 0
+  //calculate new progress increments per track
+  progress_bar_increments = 100/artists.length;
+  console.log("progress increment: " + progress_bar_increments);
+  //show progress bar
+  $('.progress').show();
+
   console.log(artists)
   console.log(metric)
   console.log(values)
@@ -26,6 +41,7 @@ function cratePlaylist(artists,  metric, values) {
 
   // Get tracks and put them into buckets
   getTracks(artists, [], function(tracks) {
+
     for (var i in tracks) {
       var track = tracks[i]
       var value = track.audio_summary[metric]
@@ -78,22 +94,14 @@ function firstToUpperCase( str ) {
 }
 
 function populatePlaylistTable(playlist, values){
-  console.log('values');
-  console.log(values);
-  console.log('in populatePlaylistTable');
 
   //Player added initialized to false, changed to true when first nonempty song is put on player
   var playerInitialized = false;
-
-
-  //clear previous results
-  $("#playlist_results > tbody > tr").remove();
 
   //add data to table
   for (i = 0; i < playlist.length; i++) {
     //if the song is null
     if(jQuery.isEmptyObject(playlist[i])){
-      console.log('song not here');
       var row = '<tr data-href="NOTFOUND"><td>'
           + 'Song Not Found' + '</td><td>'
           + '' + '</td><td>'
@@ -101,7 +109,6 @@ function populatePlaylistTable(playlist, values){
     }
     else{
       var song = playlist[i];
-      console.log(song);
       //if player hasn't been initialized yet...
       if(!playerInitialized){
         $("#player").html('<iframe src="https://embed.spotify.com/?uri=' + song.uri + '" width="100%" height="80" frameborder="0" allowtransparency="true"></iframe>');
@@ -114,7 +121,6 @@ function populatePlaylistTable(playlist, values){
           + roundToTwoDec(values[i]) + '</td></tr>';
 
     }
-    console.log('appending row');
     $('#playlist_results > tbody:first').append(row);
   }
 }
@@ -185,10 +191,21 @@ function getBucket(value, metric) {
 }
 
 function getTracks(artists, tracks, cb) {
+
   if (artists.length < 1) {
     cb(tracks)
+    //hide progress bar
+    $('.progress').hide();
+
+    console.log('hiding progress bar')
+
     return
   }
+  //make progress bar move accordingly with playlist pushes
+  $('.progress-bar').css('width', current_width_percent + progress_bar_increments + '%');
+  current_width_percent = current_width_percent + progress_bar_increments;
+  console.log("current progress: " + current_width_percent);
+
   getArtistTrackIds(artists.pop(), function(track_ids) {
     getSummaries(track_ids, [], function(summaries) {
       tracks = tracks.concat(summaries);
@@ -233,6 +250,7 @@ function getSummary(id ,cb) {
 }
 
 function getArtistTrackIds(artist, cb) {
+
   var url = "https://api.spotify.com/v1/search"
   var data = {
     query: artist,
