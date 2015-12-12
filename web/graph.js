@@ -4,10 +4,14 @@ window.onload = function() {
     searchArtist();
     $("#searchsubmit").click(function() {
       artists = $('#artistSelect').val().replace(/,\s*$/, "");
-			$('#setting-page').hide();
-			$('#graph-page').show();
-			renderGraph('energy');
-      console.log(artists);
+			if (artists.length == 0)
+				ErrMsg("No artists inputted!")
+			else {
+				$('#setting-page').hide();
+				$('#graph-page').show();
+				renderGraph('energy');
+	      console.log(artists);
+			}
     });
     $("#graphsubmit").click(function() {
 			$('#graph-page').hide();
