@@ -4,6 +4,8 @@ var SHARED_SECRET = "69HZAfaGTdyyizIoxDW0rA"
 
 $(document).ready(function (){
   console.log("ready")
+  $('#graph-page').hide();
+  $('#playlist-page').hide();
   $('.progress').hide();
 })
 
@@ -307,11 +309,11 @@ function searchArtist(){
                   dataType: 'jsonp'
                })
               ).then(function (image) {
-                process_data.push( { 
-                  artist_name: item.name, 
-                  label: item.name, 
-                  artist: item, 
-                  href: item.href, 
+                process_data.push( {
+                  artist_name: item.name,
+                  label: item.name,
+                  artist: item,
+                  href: item.href,
                   image: image.thumbnail_url.replace("cover", "60")
                 });
                 process( $.ui.autocomplete.filter(
@@ -350,8 +352,8 @@ function searchArtist(){
     .data('ui-autocomplete')._renderItem = function(ul, item) {
       return $('<li>')
           .data( "ui-autocomplete-item", item)
-          .append('<a>' + 
-            '<img width="50" src="' + item.image + '" alt="" />' + 
+          .append('<a>' +
+            '<img width="50" src="' + item.image + '" alt="" />' +
             '<span class="ui-autocomplete-artist">' + item.artist_name  + '</span>' + '<span class="ui-autocomplete-divider"><i class="fa fa-minus"></i></span>' + '<span class="ui-autocomplete-album-name">' + item.artist_name  + '</span>' + '<span class="ui-autocomplete-icon pull-right"><i class="fa fa-plus-circle fa-2x"></i></span>' + '</a>')
           .appendTo(ul);
     };
@@ -367,9 +369,9 @@ function searchArtist(){
 
 // function imageUrl(image_url){
 //   $.get(image_url)
-//     .done(function() { 
+//     .done(function() {
 //         break;
-//     }).fail(function() { 
+//     }).fail(function() {
 //         image_url = "/img/spotify_logo.png";// Image doesn't exist - do something else.
 
 //     })
@@ -408,7 +410,7 @@ function searchArtist(){
   //   function extractLast( term ) {
   //     return split( term ).pop();
   //   }
- 
+
   //   $( "#tags" )
   //     // don't navigate away from the field on tab when selecting an item
   //     .bind( "keydown", function( event ) {

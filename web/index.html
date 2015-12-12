@@ -34,8 +34,7 @@
         <div class="col-md-2"><h1><span class="label label-default">BarbieChad</span><h1></div>
         </div> -->
     <div class="alert alert-danger" id ="errorMsg" role="alert" style="display:none"> </div>
-
-        <div class="col-md-12" id="artistScreen">
+        <div class="container" id ="setting-page">
             <div class="row top-buffer shadow">
                 <h3> Settings </h3>
                 <div>
@@ -60,26 +59,29 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-12" id="metricScreen" style="display:none">
+        <div class="container" id="graph-page">
             <div class="row top-buffer shadow">
                 <h3> Graph </h3>
-                <div id="graph" style="min-width: 310px; height: 400px; max-width: 700px; margin: 0 auto"></div>
-
-                    <form id='metricform' class="form-inline">
-                        <fieldset class="form-group">
-                            <label for="metricSelect">Metric</label>
-                            <select class="selectpicker" id="metricSelect" onchange="metricChange()">
-                                <option value="tempo" selected>Tempo</option>
-                                <option value="loudness">Loudness</option>
-                                <option value="energy">Energy</option>
-                                <option value="danceability">Danceability</option>
-                            </select>
-                        </fieldset>
-                        <button type="button" style="float: right" id="graphsubmit" class="btn btn-primary">Generate Playlist</button>
-										</form>
+                <div class="row">
+                  <div id="graph" style="min-width: 310px; height: 400px; max-width: 700px; margin: 0 auto"></div>
+                <div>
+                <div class="col-md-6">
+                  <form id='metricform' class="form-inline">
+                      <fieldset class="form-group">
+                          <label for="metricSelect">Metric: &nbsp; </label>
+                          <select class="selectpicker" id="metricSelect" onchange="metricChange()">
+                              <option value="energy" selected>Energy</option>
+                              <option value="tempo">Tempo</option>
+                              <option value="loudness">Loudness</option>
+                              <option value="danceability">Danceability</option>
+                          </select>
+                      </fieldset>
+                      <button type="button" style="float: right; width: 50%;" id="graphsubmit" class="btn btn-success">Generate Playlist</button>
+  								</form>
+                </div>
             </div>
         </div>
-        <div class="col-md-12" id="musicScreen" style="display:none">
+        <div class="container" id="playlist-page">
           <div class="testtable row top-buffer shadow">
             <h3> Results </h3>
             <div id="player" style="padding-right: 0px;">

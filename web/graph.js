@@ -3,17 +3,17 @@ window.onload = function() {
 		var artists;
     searchArtist();
     $("#searchsubmit").click(function() {
-        artists = $('#artistSelect').val().replace(/,\s*$/, "");
-        $("#artistScreen").hide();
-        $("#metricScreen").show();
-        console.log(artists);
+      artists = $('#artistSelect').val().replace(/,\s*$/, "");
+			$('#setting-page').hide();
+			$('#graph-page').show();
+			renderGraph('energy');
+      console.log(artists);
     });
     $("#graphsubmit").click(function() {
-        passToSpotify(artists);
-        $("#metricScreen").hide();
-        $("#musicScreen").show();
+			$('#graph-page').hide();
+			$('#playlist-page').show();
+      passToSpotify(artists);
     });
-    renderGraph(metric);
 };
 
 function metricChange() {
