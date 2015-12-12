@@ -4,11 +4,12 @@ window.onload = function() {
     searchArtist();
     $("#searchsubmit").click(function() {
       artists = $('#artistSelect').val().replace(/,\s*$/, "");
-			if (artists.length == 0)
+			if (artists.split(',').length == 0)
 				ErrMsg("No artists inputted!")
 			else {
 				$('#setting-page').hide();
 				$('#graph-page').show();
+				renderArtistList(artists.split(','));
 				renderGraph('energy');
 	      console.log(artists);
 			}
@@ -19,6 +20,18 @@ window.onload = function() {
       passToSpotify(artists);
     });
 };
+
+function renderArtistList(artists) {
+	$('#artist-list').empty()
+	var list_html = ''
+	list_html += "<h3> Artists </h3>"
+	list_html += "<ul class='list-group'>"
+	for (var i in artists) {
+		list_html += "<li class='list-group-item'>" + artists[i] + "</li>"
+	}
+	list_html += "</ul>"
+	$('#artist-list').append(list_html);
+}
 
 function metricChange() {
     metric = $('#metricSelect').val();

@@ -2,6 +2,16 @@ body {
   background-color: #fff;
 }
 
+.description-settings {
+  font-size: 22px;
+  margin-bottom: 50px;
+}
+
+.description-graph {
+  font-size: 22px;
+  margin-bottom: 0px;
+}
+
 .top-buffer {
   margin:20px 20px 20px;
   padding: 2em 2em 2em;
@@ -18,7 +28,15 @@ div.row h2{
 	margin: 2em 2em 2em;
 }*/
 #artist{
+  height: 46px;
+  line-height: 48px;
+  font-size: 24px;
+  vertical-align: middle;
+}
 
+#metric-label {
+  font-size: 24px;
+  float: left;
 }
 
 label {
@@ -82,13 +100,14 @@ div.shadow:hover {
 }*/
 
 .button_back{
-/*	line-height: 12px;*/
-    width: 20%;
-    margin-top: 1em;
-    margin-right: 2em;
-    position: absolute;
-    top: 12em;
-    right: 2em;
+  top: 38px;
+  position: relative;
+}
+
+
+#graphsubmit {
+  width: 80%;
+  margin: 0 auto;
 }
 
 #graph-page{

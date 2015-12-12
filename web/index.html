@@ -26,17 +26,21 @@
         </div>
        </div>
     <div class="alert alert-danger" id ="errorMsg" role="alert" style="display:none">
-        <a class="close" onclick="$('.alert').hide()">X</a> 
+        <a class="close" onclick="$('.alert').hide()">X</a>
      </div>
         <div class="container" id ="setting-page">
             <div class="row top-buffer shadow">
-                <h2> Settings </h2>
+                <h2> Step 1: Artists </h2>
+                <div class="description-settings">
+                  Your playlist will be generated using songs from artists of your choice. <br>
+                  Search and add several artists below! <br>
+                </div>
                 <div>
                     <form id='searchform'>
                         <fieldset class="form-group">
                             <div class="row">
                               <div class="col-md-1">
-                                <h3 id="artist">Artist</h3>
+                                <div id="artist">Artists: </div>
                               </div>
                               <div class="col-md-11">
                                 <div class="input-group input-group-lg">
@@ -48,9 +52,8 @@
                                  </div>
                               </div>
                             </div>
-
                         </fieldset>
-                        <div class="row">
+                        <div class="row" style="margin-top: 30px;">
                             <div class="col-md-3"></div>
                         <div class="col-md-3"><button type="button" id="searchsubmit" class="btn btn-primary btn-lg btn-block">Submit</button></div>
                         <div class="col-md-3"><a data-toggle="modal" href="#HelpModal" class="btn btn-info btn-lg btn-block">Help</a></div>
@@ -61,40 +64,47 @@
             </div>
         </div>
         <div class="container" id="graph-page">
-            <div class="row" style="margin-top: -9px;" top-buffer shadow>
-                <h2> Graph </h2>
-                <h4 style="text-align: center">Click the graph area to add a point. Click a point to remove it.</h4>
-                <div class="row">
-                    <div id="graph" style="min-width: 310px; height: 400px; max-width: 700px; margin: 0 auto">
-                    </div>
+            <div class="row top-buffer shadow">
+              <div class="row">
+                <div class="col-md-10"> <h2> Step 2: Graph </h2> </div>
+                <div class="col-md-2"> <button type="button" id="back-to-settings" class="btn btn-primary button_back"> Back to Artists </button> </div>
+              </div>
+              <div class="row">
+                <div class="description-graph col-md-8">
+                  We now need to pick a metric and draw out a graph of our playlist.<br>
+                  Click the graph area to add a point. Click a point to remove it. <br>
                 </div>
-                <div class="row">
-                    
-                  <form id='metricform' class="form-inline">
-                    <div class="col-md-6">
-                      <fieldset class="form-group">
-                          <label for="metricSelect">Metric: &nbsp; </label>
-                          <select class="selectpicker" id="metricSelect" onchange="metricChange()">
-                              <option value="energy" selected>Energy</option>
-                              <option value="tempo">Tempo</option>
-                              <option value="loudness">Loudness</option>
-                              <option value="danceability">Danceability</option>
-                          </select>
-                      </fieldset>
-                    </div>
-                    <div class="col-md-6">
-                      <button type="button" style="float: right; width: 50%;" id="graphsubmit" class="btn btn-success btn-lg btn-block">Generate Playlist</button>
-                    </div>
-  				 </form>
+                <div class="col-md-4">
+                  <fieldset class="form-group">
+                      <div id="metric-label"> Metric: &nbsp; </div>
+                      <select class="selectpicker" id="metricSelect" onchange="metricChange()">
+                          <option value="energy" selected>Energy</option>
+                          <option value="tempo">Tempo</option>
+                          <option value="loudness">Loudness</option>
+                          <option value="danceability">Danceability</option>
+                      </select>
+                  </fieldset>
                 </div>
-            </div>
-            <div class="row">
-              <button type="button" id="back-to-settings" class="btn btn-primary button_back"> Back </button>
+              </div>
+              <div class="row">
+                <div class="col-md-2" id="artist-list"></div>
+                <div class="col-md-9">
+                  <div id="graph" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+                </div>
+              </div>
+              <div class="row">
+                <form id='metricform' class="form-inline">
+                    <button type="button" id="graphsubmit" class="btn btn-success btn-lg btn-block">Generate Playlist</button>
+				        </form>
+              </div>
             </div>
         </div>
         <div class="container" id="playlist-page">
           <div class="testtable row top-buffer shadow">
-            <h2> Results </h2>
+            <div class="row">
+              <div class="col-md-10"> <h2> PLAYLIST: Ready! </h2> </div>
+              <div class="col-md-2"> <button type="button" id="back-to-graph" class="btn btn-primary button_back"> Back to Graph </button> </div>
+            </div>
             <div id="player" style="padding-right: 0px;">
             </div>
             <div class="progress">

@@ -24,6 +24,7 @@ $("tr").click(function(){
 
 function ErrMsg(msg){
   var message = "<strong>Oh snap! </strong>" + msg
+  $('#errorMsg').empty()
   $('#errorMsg').append(message);
   $('#errorMsg').show();
 }
@@ -279,8 +280,9 @@ function getArtistTrackIds(artist, cb) {
           cb(ids)
         })
       } else {
-        console.error("No artists found.")
-        ErrMsg("No artists found.")
+        console.warn("No artists found under '" + artist + "'.")
+        ErrMsg("No artists found under " + artist)
+        cb([])
       }
 
     }
