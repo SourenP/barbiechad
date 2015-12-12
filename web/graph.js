@@ -4,10 +4,14 @@ window.onload = function() {
     searchArtist();
     $("#searchsubmit").click(function() {
         artists = $('#artistSelect').val().replace(/,\s*$/, "");
+        $("#artistScreen").hide();
+        $("#metricScreen").show();
         console.log(artists);
     });
     $("#graphsubmit").click(function() {
         passToSpotify(artists);
+        $("#metricScreen").hide();
+        $("#musicScreen").show();
     });
     renderGraph(metric);
 };
