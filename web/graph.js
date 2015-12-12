@@ -1,13 +1,13 @@
-var artists = "";
 var metric = "tempo";
 window.onload = function() {
+		var artists;
     searchArtist();
     $("#searchsubmit").click(function() {
-        var artists = $('#artistSelect').val().replace(/,\s*$/, "").split(',');
+        artists = $('#artistSelect').val().replace(/,\s*$/, "");
         console.log(artists);
     });
     $("#graphsubmit").click(function() {
-        passToSpotify();
+        passToSpotify(artists);
     });
     renderGraph(metric);
 };
@@ -129,7 +129,7 @@ function renderGraph(metric) {
     });
 }
 
-function passToSpotify() {
+function passToSpotify(artists) {
     var values = [];
     var lines = $('#graph').highcharts().getCSV().split('\n');
     for (var i = 1; i < lines.length; i++) {
