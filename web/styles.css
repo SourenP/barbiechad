@@ -81,6 +81,20 @@ div.shadow:hover {
     margin: 0 auto;
 }*/
 
+.button_back{
+/*	line-height: 12px;*/
+    width: 20%;
+    margin-top: 1em;
+    margin-right: 2em;
+    position: absolute;
+    top: 16em;
+    right: 2em;
+}
+
+#graph-page{
+	padding-bottom: 5em;
+}
+
 #circle {
 	width: 60px;
 	height: 60px;
