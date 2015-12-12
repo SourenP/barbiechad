@@ -23,7 +23,7 @@ $("tr").click(function(){
 });
 
 function ErrMsg(msg){
-  var message = "<strong>Oh snap!</strong><a href='#'' class='alert-link'>" + msg + "and try submitting again."
+  var message = "<strong>Oh snap!</strong><a href='#' class='alert-link'>" + msg + "and try submitting again."
   $('#errorMsg').append(message);
   $('#errorMsg').show();
 }

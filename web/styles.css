@@ -17,6 +17,9 @@ div.row h2{
 /*form{
 	margin: 2em 2em 2em;
 }*/
+#artist{
+
+}
 
 label {
   font-size: 20px;
@@ -57,6 +60,26 @@ div.shadow:hover {
 	height: auto;
 	background-size: 100% auto !important
 }
+
+#errorMsg {
+    position: fixed;
+    top: 0%;
+    left: 50%;
+/*    margin-left: -150px;
+    width: 300px;*/
+    z-index: 9999;
+}
+
+#errorMsg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+}
+/*#errorMsg {
+    margin: 0 auto;
+}*/
 
 #circle {
 	width: 60px;
