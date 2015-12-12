@@ -78,6 +78,8 @@ div.shadow:hover {
 	margin:1em;
 }
 
+/*Jquery-UI css*/
+
 .ui-autocomplete {
   position: absolute;
   top: 100%;
