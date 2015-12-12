@@ -8,6 +8,13 @@ body {
   height: 85vh;
 }
 
+div.row h2{
+	margin: 1em 0px 1em;
+	font-size: 36px;
+	text-transform: uppercase;
+	color: #A2FFFC;
+}
+
 /*form{
 	margin: 2em 2em 2em;
 }*/
@@ -78,7 +85,7 @@ div.shadow:hover {
 	margin:1em;
 }
 
-/*jquery-ui.css*/
+/*Jquery-UI css*/
 .ui-autocomplete {
   position: absolute;
   top: 100%;

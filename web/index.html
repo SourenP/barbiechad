@@ -4,6 +4,7 @@
     <title>BarbieChad</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
     <link href="bootstrap-3.3.5-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine:bold,bolditalic|Inconsolata:italic|Droid+Sans">
     <link href="bootstrap-select.min.css" rel="stylesheet">
     <script type="text/javascript" src="jquery-1.11.1.min.js"></script>
     <script type="text/javascript" src='script.js'></script>
@@ -27,18 +28,25 @@
     <div class="alert alert-danger" id ="errorMsg" role="alert" style="display:none"> </div>
         <div class="container" id ="setting-page">
             <div class="row top-buffer shadow">
-                <h3> Settings </h3>
+                <h2> Settings </h2>
                 <div>
                     <form id='searchform'>
                         <fieldset class="form-group">
-                            <label for="artist">Artist</label>
-                            <div class="input-group input-group-lg">
-                               <span class="input-group-addon">
-                                  <i class="fa fa-download"></i>
-                               </span>
-                               <span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
-                               <input class="form-control input-lg" id="artistSelect" name="album[query]" placeholder="Search" type="text" autocomplete="off">
-                             </div>
+                            <div class="row">
+                              <div class="col-md-2">
+                                <h4>Artist</h4>
+                              </div>
+                              <div class="col-md-10">
+                                <div class="input-group input-group-lg">
+                                   <span class="input-group-addon">
+                                      <i class="fa fa-download"></i>
+                                   </span>
+                                   <span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
+                                   <input class="form-control input-lg" id="artistSelect" name="album[query]" placeholder="Search" type="text" autocomplete="off">
+                                 </div>
+                              </div>
+                            </div>
+
                         </fieldset>
                         <button type="button" id="searchsubmit" class="btn btn-primary">Submit</button>
                         <a data-toggle="modal" href="#HelpModal" class="btn btn-info">Help</a>
@@ -48,11 +56,11 @@
         </div>
         <div class="container" id="graph-page">
             <div class="row top-buffer shadow">
-                <h3> Graph </h3>
+                <h2> Graph </h2>
                 <div class="row">
                   <div id="graph" style="min-width: 310px; height: 400px; max-width: 700px; margin: 0 auto"></div>
-                <div>
-                <div class="col-md-6">
+                </div>
+                <div class="row">
                   <form id='metricform' class="form-inline">
                       <fieldset class="form-group">
                           <label for="metricSelect">Metric: &nbsp; </label>
@@ -67,10 +75,13 @@
   								</form>
                 </div>
             </div>
+            <div class="row" style="position:absolute; bottom: 10px; width: 100%;">
+              <button type="button" style="float: left;" id="back-to-settings" class="btn btn-primary"> Back </butto n>
+            </div>
         </div>
         <div class="container" id="playlist-page">
           <div class="testtable row top-buffer shadow">
-            <h3> Results </h3>
+            <h2> Results </h2>
             <div id="player" style="padding-right: 0px;">
             </div>
             <div class="progress">
@@ -92,6 +103,9 @@
               </table>
             </div>
 
+          </div>
+          <div class="row" style="position:absolute; bottom: 10px; width: 100%;">
+            <button type="button" style="float: left;" id="back-to-graph" class="btn btn-primary"> Back </butto n>
           </div>
         </div>
     </div>
