@@ -179,3 +179,7 @@ div.shadow:hover {
   font-size: 0.7em;
 }
 
+.ui-helper-hidden-accessible{
+	display: none;
+}
+

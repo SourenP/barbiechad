@@ -3,7 +3,8 @@ var metric = "tempo";
 window.onload = function() {
     searchArtist();
     $("#searchsubmit").click(function() {
-        artists = $('#artistSelect').val();
+        var artists = $('#artistSelect').val().replace(/,\s*$/, "").split(',');
+        console.log(artists);
     });
     $("#graphsubmit").click(function() {
         passToSpotify();
