@@ -73,3 +73,109 @@ div.shadow:hover {
 	border-bottom: 60px solid #5FB2B0;
 	margin:1em;
 }
+
+.ui-autocomplete {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  float: left;
+  display: none;
+  min-width: 160px;
+  _width: 160px;
+  padding: 4px 0;
+  list-style: none;
+  background-color: #ffffff;
+  border-color: #999999;
+  border-style: solid;
+  border-width: 1px;
+  -moz-border-radius-topright: 5px;
+  -webkit-border-top-right-radius: 5px;
+  border-top-right-radius: 5px;
+  -moz-border-radius-bottomright: 5px;
+  -webkit-border-bottom-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  -moz-border-radius-bottomleft: 5px;
+  -webkit-border-bottom-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 10px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 10px;
+}
+
+.ui-autocomplete .ui-menu-item > a.ui-corner-all {
+  display: block;
+  padding: 3px 15px;
+  clear: both;
+  font-weight: normal;
+  line-height: 18px;
+  color: #555555;
+  white-space: nowrap;
+  min-height: 50px;
+}
+
+.ui-autocomplete .ui-menu-item > a.ui-corner-all:hover {
+  color: #333333;
+  text-decoration: none;
+  background-color: #eeeeee;
+  border-radius: 0px;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  background-image: none;
+}
+
+.ui-autocomplete .ui-menu-item > a.ui-corner-all:active {
+  color: #333333;
+  text-decoration: none;
+  background-color: #eeeeee;
+  border-radius: 0px;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  background-image: none;
+}
+
+.ui-autocomplete {
+  vertical-align: middle;
+}
+
+.ui-autocomplete .ui-menu-item {
+  vertical-align: middle;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.ui-autocomplete .ui-menu-item .ui-autocomplete-icon {
+  vertical-align: middle;
+  padding-left: 1em;
+}
+
+.ui-autocomplete .ui-menu-item .ui-autocomplete-icon i {
+  display: inline-block;
+  font-size: 2em;
+  line-height: 2em;
+  text-align: center;
+  vertical-align: bottom;
+  color: #27ae60;
+}
+
+.ui-autocomplete .ui-menu-item .ui-autocomplete-artist {
+  font-weight: bold;
+  font-size: 1.2em;
+  height: 55px;
+  line-height: 55px;
+  padding-left: 0.6em;
+}
+
+.ui-autocomplete .ui-menu-item .ui-autocomplete-album-name {
+  font-size: 1.2em;
+  height: 55px;
+  line-height: 55px;
+}
+
+.ui-autocomplete .ui-menu-item .ui-autocomplete-divider {
+  padding-right: 0.5em;
+  padding-left: 0.5em;
+}
+
+.ui-autocomplete .ui-menu-item .ui-autocomplete-divider i {
+  font-size: 0.7em;
+}
+

@@ -1,6 +1,7 @@
 var artists = "";
 var metric = "tempo";
 window.onload = function() {
+    searchArtist();
     $("#searchsubmit").click(function() {
         artists = $('#artistSelect').val();
     });

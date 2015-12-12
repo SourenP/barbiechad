@@ -14,6 +14,7 @@
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="http://highcharts.github.io/export-csv/export-csv.js"></script>
     <script type="text/javascript" src='graph.js'></script>
+    <script type="text/javascript" src='jquery-ui.js'></script>
 </head>
 
 <body class='spotifyblack_background white_text'>
@@ -62,6 +63,15 @@
                             <label for="artist">Artist</label>
                             <input type="search" class="form-control" id="artistSelect" placeholder="Kanye">
                         </fieldset>
+
+<div class="input-group input-group-lg">
+   <span class="input-group-addon">
+      <i class="fa fa-download"></i>
+   </span>
+   <span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
+   <input class="form-control input-lg" id="spotify-album-search" name="album[query]" placeholder="Search" type="text" autocomplete="off">
+ </div>
+                        
                         <button type="button" id="searchsubmit" class="btn btn-primary">Submit</button>
                         <a data-toggle="modal" href="#HelpModal" class="btn btn-info">Help</a>
                     </form>
