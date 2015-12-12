@@ -44,14 +44,21 @@
                             <input type="search" class="form-control" id="artistSelect" placeholder="Kanye">
                         </fieldset> -->
                         <fieldset class="form-group">
-                            <label for="artist">Artist</label>
-                            <div class="input-group input-group-lg">
-                               <span class="input-group-addon">
-                                  <i class="fa fa-download"></i>
-                               </span>
-                               <span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
-                               <input class="form-control input-lg" id="artistSelect" name="album[query]" placeholder="Search" type="text" autocomplete="off">
-                             </div>
+                            <div class="row">
+                              <div class="col-md-4">
+                                Artist
+                              </div>
+                              <div class="col-md-8">
+                                <div class="input-group input-group-lg">
+                                   <!-- <span class="input-group-addon">
+                                      <i class="fa fa-download"></i>
+                                   </span> -->
+                                   <span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
+                                   <input class="form-control input-lg" id="artistSelect" name="album[query]" placeholder="Search" type="text" autocomplete="off">
+                                 </div>
+                              </div>
+                            </div>
+
                         </fieldset>
                         <button type="button" id="searchsubmit" class="btn btn-primary">Submit</button>
                         <a data-toggle="modal" href="#HelpModal" class="btn btn-info">Help</a>
@@ -64,8 +71,8 @@
                 <h3> Graph </h3>
                 <div class="row">
                   <div id="graph" style="min-width: 310px; height: 400px; max-width: 700px; margin: 0 auto"></div>
-                <div>
-                <div class="col-md-6">
+                </div>
+                <div class="row">
                   <form id='metricform' class="form-inline">
                       <fieldset class="form-group">
                           <label for="metricSelect">Metric: &nbsp; </label>
@@ -79,6 +86,9 @@
                       <button type="button" style="float: right; width: 50%;" id="graphsubmit" class="btn btn-success">Generate Playlist</button>
   								</form>
                 </div>
+            </div>
+            <div class="row" style="position:absolute; bottom: 10px; width: 100%;">
+              <button type="button" style="float: left;" id="back-to-settings" class="btn btn-primary"> Back </butto n>
             </div>
         </div>
         <div class="container" id="playlist-page">
@@ -105,6 +115,9 @@
               </table>
             </div>
 
+          </div>
+          <div class="row" style="position:absolute; bottom: 10px; width: 100%;">
+            <button type="button" style="float: left;" id="back-to-graph" class="btn btn-primary"> Back </butto n>
           </div>
         </div>
     </div>

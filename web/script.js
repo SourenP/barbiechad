@@ -4,6 +4,15 @@ var SHARED_SECRET = "69HZAfaGTdyyizIoxDW0rA"
 
 $(document).ready(function (){
   console.log("ready")
+  $('#back-to-settings').click(function() {
+    $('#graph-page').hide();
+    $('#setting-page').show();
+  })
+  $('#back-to-graph').click(function() {
+    $('#playlist-page').hide();
+    $('#graph-page').show();
+  })
+
   $('#graph-page').hide();
   $('#playlist-page').hide();
   $('.progress').hide();
