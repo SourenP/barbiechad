@@ -23,7 +23,7 @@ $("tr").click(function(){
 });
 
 function ErrMsg(msg){
-  var message = "<strong>Oh snap!</strong><a href='#'' class='alert-link'>" + msg + "and try submitting again."
+  var message = "<strong>Oh snap!</strong><a href='#' class='alert-link'>" + msg + "and try submitting again."
   $('#errorMsg').append(message);
   $('#errorMsg').show();
 }
@@ -341,7 +341,7 @@ function searchArtist(){
                   label: item.name,
                   artist: item,
                   href: item.href,
-                  image: image.thumbnail_url.replace("cover", "60")
+                  //image: image.thumbnail_url.replace("cover", "60")
                 });
                 process( $.ui.autocomplete.filter(
             process_data, extractLast( query.term)));
@@ -380,7 +380,7 @@ function searchArtist(){
       return $('<li>')
           .data( "ui-autocomplete-item", item)
           .append('<a>' +
-            '<img width="50" src="' + item.image + '" alt="" />' +
+            //'<img width="50" src="' + item.image + '" alt="" />' +
             '<span class="ui-autocomplete-artist">' + item.artist_name  + '</span>' + '<span class="ui-autocomplete-divider"><i class="fa fa-minus"></i></span>' + '<span class="ui-autocomplete-album-name">' + item.artist_name  + '</span>' + '<span class="ui-autocomplete-icon pull-right"><i class="fa fa-plus-circle fa-2x"></i></span>' + '</a>')
           .appendTo(ul);
     };

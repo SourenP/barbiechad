@@ -65,10 +65,10 @@ function renderGraph(metric) {
         title: {
             text: ""
         },
-        subtitle: {
-            align: 'left',
-            text: 'Click the graph area to add a point. Click a point to remove it.'
-        },
+        // subtitle: {
+        //     align: 'left',
+        //     text: 'Click the graph area to add a point. Click a point to remove it.'
+        // },
         xAxis: {
             title: {
                 text: ''
