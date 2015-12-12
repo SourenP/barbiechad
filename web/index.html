@@ -39,10 +39,10 @@
                               <div class="col-md-10">
                                 <div class="input-group input-group-lg">
                                    <span class="input-group-addon">
-                                      <i class="fa fa-download"></i>
+                                      <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                                    </span>
                                    <span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
-                                   <input class="form-control input-lg" id="artistSelect" name="album[query]" placeholder="Search" type="text" autocomplete="off">
+                                   <input class="form-control input-lg" id="artistSelect" name="album[query]" placeholder="Search an artist... (e.g. Kanye West)" type="text" autocomplete="off">
                                  </div>
                               </div>
                             </div>
@@ -62,7 +62,9 @@
             <div class="row top-buffer shadow">
                 <h2> Graph </h2>
                 <div class="row">
-                  <div id="graph" style="min-width: 310px; height: 400px; max-width: 700px; margin: 0 auto"></div>
+                    <h4 style="text-align: center">Click the graph area to add a point. Click a point to remove it.</h4>
+                    <div id="graph" style="min-width: 310px; height: 400px; max-width: 700px; margin: 0 auto">
+                    </div>
                 </div>
                 <div class="row">
                     
