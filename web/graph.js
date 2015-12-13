@@ -1,15 +1,13 @@
 var metric = "tempo";
 window.onload = function() {
-		var artists;
     searchArtist();
     $("#searchsubmit").click(function() {
-      artists = $('#artistSelect').val().replace(/,\s*$/, "");
-			if (artists.split(',').length == 0)
+			if (Object.keys(picked_artists).length == 0)
 				ErrMsg("No artists inputted!")
 			else {
 				$('#setting-page').hide();
 				$('#graph-page').show();
-				renderArtistList(artists.split(','));
+				renderArtistList(picked_artists);
 				renderGraph('energy');
 	      console.log(artists);
 			}
@@ -17,7 +15,7 @@ window.onload = function() {
     $("#graphsubmit").click(function() {
 			$('#graph-page').hide();
 			$('#playlist-page').show();
-      passToSpotify(artists);
+      passToSpotify(picked_artists);
     });
 };
 
@@ -26,8 +24,8 @@ function renderArtistList(artists) {
 	var list_html = ''
 	list_html += "<h3> Artists </h3>"
 	list_html += "<ul class='list-group'>"
-	for (var i in artists) {
-		list_html += "<li class='list-group-item'>" + artists[i] + "</li>"
+	for (var key in picked_artists) {
+		list_html += "<li class='list-group-item'>" + key + "</li>"
 	}
 	list_html += "</ul>"
 	$('#artist-list').append(list_html);
@@ -150,13 +148,11 @@ function renderGraph(metric) {
     });
 }
 
-function passToSpotify(artists) {
+function passToSpotify(picked_artists) {
     var values = [];
     var lines = $('#graph').highcharts().getCSV().split('\n');
     for (var i = 1; i < lines.length; i++) {
         values.push(parseFloat(lines[i].split(',')[1]));
     }
-    cratePlaylist(artists.split(','), metric, values);
-    console.log(artists);
-    console.log(values);
+    cratePlaylist(picked_artists, metric, values);
 }

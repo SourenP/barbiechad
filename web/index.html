@@ -30,36 +30,36 @@
      </div>
         <div class="container" id ="setting-page">
             <div class="row top-buffer shadow">
-                <h2> Step 1: Artists </h2>
+                <div class="row">
+                  <div class="col-md-10"> <h2> Step 1: Artists </h2> </div>
+                  <div class="col-md-2"><a data-toggle="modal" href="#HelpModal" class="btn btn-info btn-block button_back">Help</a></div>
+                </div>
                 <div class="description-settings">
                   Your playlist will be generated using songs from artists of your choice. <br>
                   Search and add several artists below! <br>
                 </div>
                 <div>
-                    <form id='searchform'>
-                        <fieldset class="form-group">
-                            <div class="row">
-                              <div class="col-md-1">
-                                <div id="artist">Artists: </div>
-                              </div>
-                              <div class="col-md-11">
-                                <div class="input-group input-group-lg">
-                                   <span class="input-group-addon">
-                                      <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-                                   </span>
-                                   <span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
-                                   <input class="form-control input-lg" id="artistSelect" name="album[query]" placeholder="Search artist(s) seperated by commas... (e.g. Drake, Meek Mill)" type="text" autocomplete="off">
-                                 </div>
-                              </div>
-                            </div>
-                        </fieldset>
-                        <div class="row" style="margin-top: 30px;">
-                            <div class="col-md-3"></div>
-                        <div class="col-md-3"><button type="button" id="searchsubmit" class="btn btn-primary btn-lg btn-block">Submit</button></div>
-                        <div class="col-md-3"><a data-toggle="modal" href="#HelpModal" class="btn btn-info btn-lg btn-block">Help</a></div>
-                            <div class="col-md-3"></div>
-                    </div>
-                    </form>
+                <div class="row">
+                  <div class="col-md-1">
+                    <div id="artist">Search: </div>
+                  </div>
+                  <div class="col-md-8">
+                    <div class="input-group input-group-lg">
+                       <span class="input-group-addon">
+                          <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                       </span>
+                       <span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
+                       <input class="form-control input-lg" id="artistSelect" name="album[query]" placeholder="Search artist(s) seperated by commas... (e.g. Drake, Meek Mill)" type="text" autocomplete="off">
+                     </div>
+                  </div>
+                  <div class="col-md-3">
+                    <h3> Artists </h3>
+                    <ul class="list-group" id="search-artists">
+                      <li class='list-group-item'> No artists yet... </li>
+                    </ul>
+                    <button type="button" id="searchsubmit" class="btn btn-primary btn-lg btn-block">Submit</button></div>
+                  </div>
+                </div>
                 </div>
             </div>
         </div>
@@ -126,9 +126,6 @@
               </table>
             </div>
 
-          </div>
-          <div class="row">
-            <button type="button" id="back-to-graph" class="btn btn-primary button_back"> Back </butto n>
           </div>
         </div>
     </div>

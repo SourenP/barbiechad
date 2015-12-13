@@ -2,6 +2,8 @@ var API_KEY = "O3YEHGYZNFQA77X5E"
 var CONSUMER_KEY = "1e3406ea62e381dfd5201f1ec84592a9"
 var SHARED_SECRET = "69HZAfaGTdyyizIoxDW0rA"
 
+var picked_artists = {}
+
 $(document).ready(function (){
   console.log("ready")
   $('#back-to-settings').click(function() {
@@ -45,9 +47,7 @@ function cratePlaylist(artists,  metric, values) {
   //show progress bar
   $('.progress').show();
 
-  console.log(artists)
-  console.log(metric)
-  console.log(values)
+  artists = Object.keys(artists)
 
   var buckets = [[], [], [], [], []]
 
@@ -345,8 +345,7 @@ function searchArtist(){
                   href: item.href,
                   //image: image.thumbnail_url.replace("cover", "60")
                 });
-                process( $.ui.autocomplete.filter(
-            process_data, extractLast( query.term)));
+                process( $.ui.autocomplete.filter(process_data, extractLast( query.term)));
               });
             });
           });
@@ -361,15 +360,8 @@ function searchArtist(){
 
       select: function( event, ui ) {
           event.preventDefault();
-          var terms = split( this.value );
-          // remove the current input
-          terms.pop();
-          // add the selected item
-          $('#spotify-id').val(ui.item.artist.href);
-          terms.push(ui.item.label);
-          // add placeholder to get the comma-and-space at the end
-          terms.push( "" );
-          this.value = terms.join( "," );
+          addArtist(ui.item)
+          $('#artistSelect').val('');
           return false;
         },
         messages: {
@@ -386,6 +378,23 @@ function searchArtist(){
             '<span class="ui-autocomplete-artist">' + item.artist_name  + '</span>' + '<span class="ui-autocomplete-divider"><i class="fa fa-minus"></i></span>' + '<span class="ui-autocomplete-album-name">' + item.artist_name  + '</span>' + '<span class="ui-autocomplete-icon pull-right"><i class="fa fa-plus-circle fa-2x"></i></span>' + '</a>')
           .appendTo(ul);
     };
+}
+
+function addArtist(artist) {
+  picked_artists[artist.label] = artist
+  renderSearchArtists()
+}
+
+function renderSearchArtists() {
+  $('#search-artists').empty()
+  for (var i in picked_artists) {
+    $('#search-artists').append("<li class='list-group-item'>" + picked_artists[i].label + "<button onclick='deleteArtist(\""+ picked_artists[i].artist_name + "\")' class='btn btn-md btn-danger delete-button' type='submit'><span class='glyphicon glyphicon-remove' aria-hidden='true'></span></button></li>")
+  }
+}
+
+function deleteArtist(name) {
+  delete picked_artists[name];
+  renderSearchArtists()
 }
 
 
