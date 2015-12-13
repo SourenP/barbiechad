@@ -10,6 +10,60 @@ button.btn.btn-md.btn-danger.delete-button {
   float: right;
 }
 
+#searchsubmit{
+  background-color: #8BD5CB;
+  border-color: #8BD5CB;
+}
+
+#searchsubmit:hover { 
+    background-color: #5296ad;
+}
+
+#graphsubmit{
+  background-color: #8BD5CB;
+  border-color: #8BD5CB;
+}
+
+#graphsubmit:hover { 
+    background-color: #5296ad;
+}
+
+#searchhelp{
+  background-color: #F6CE50;
+  border-color: #F6CE50;
+}
+
+#searchhelp:hover { 
+    background-color: #f3bb0c;
+}
+
+#back-to-settings{
+  background-color: #D86A9F;
+  border-color: #D86A9F;
+}
+
+#back-to-settings:hover { 
+  background-color: #ca357d;
+}
+
+#back-to-graph{
+  background-color: #D86A9F;
+  border-color: #D86A9F;
+}
+
+#back-to-graph:hover { 
+  background-color: #ca357d;
+}
+
+.btn-danger{
+  background-color: #D86A9F !important;
+  border-color: #D86A9F !important;
+}
+
+.btn-danger:hover { 
+  background-color: #ca357d !important;
+}
+
 .description-settings {
   font-size: 22px;
   margin-bottom: 50px;
