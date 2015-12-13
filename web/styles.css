@@ -164,6 +164,7 @@ div.shadow:hover {
 .button_back{
   top: 38px;
   position: relative;
+  margin-left: 10px;
 }
 
 
