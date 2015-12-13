@@ -34,6 +34,8 @@ var current_width_percent = 0;
 
 function cratePlaylist(artists,  metric, values) {
   console.log('starting progress bar')
+  //clear old player
+  $("#player").empty();
   //clear previous results on table
   $("#playlist_results > tbody > tr").remove();
   //reset progress bar
@@ -106,7 +108,6 @@ function firstToUpperCase( str ) {
 }
 
 function populatePlaylistTable(playlist, values){
-
   //Player added initialized to false, changed to true when first nonempty song is put on player
   var playerInitialized = false;
 
