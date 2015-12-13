@@ -24,7 +24,6 @@ $(document).ready(function (){
   $("#searchsubmit").prop('disabled', true);
   $('#searchsubmit').css({"background":"white"});
   $('#searchsubmit').css({"color":"black"});
-  $('.tooltip-wrapper').tooltip('enable');
 })
 
 $("tr").click(function(){
@@ -394,10 +393,6 @@ function addArtist(artist) {
   $('#searchsubmit').css({"background":"#8BD5CB"});
   $('#searchsubmit').css({"color":"white"});
   $("#searchsubmit").prop('disabled', false);
-  if($('.tooltip-wrapper').data('ui-tooltip')) {
-    $('.tooltip-wrapper').tooltip('disable');
-  }
-  //$('.tooltip-wrapper').tooltip('disable');
   renderSearchArtists()
 }
 
@@ -414,7 +409,6 @@ function deleteArtist(name) {
     $("#searchsubmit").prop('disabled', true);
     $('#searchsubmit').css({"background":"white"});
     $('#searchsubmit').css({"color":"black"});
-    $('.tooltip-wrapper').tooltip('enable');
   }
   renderSearchArtists()
 }
