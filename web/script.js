@@ -6,19 +6,11 @@ $(document).ready(function (){
   console.log("ready")
   $('#back-to-settings').click(function() {
     $('#setting-page').slideDown("slow");
-<<<<<<< Updated upstream
     $('#graph-page').slideUp("slow");
   })
   $('#back-to-graph').click(function() {
     $('#graph-page').slideDown("slow");
     $('#playlist-page').slideUp("slow");
-=======
-    $('#graph-page').hide();
-  })
-  $('#back-to-graph').click(function() {
-    $('#graph-page').slideDown("slow");
-    $('#playlist-page').hide();
->>>>>>> Stashed changes
   })
 
   $('#graph-page').hide();

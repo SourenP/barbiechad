@@ -9,13 +9,8 @@ window.onload = function() {
 			else {
 				$('#setting-page').slideUp("slow");
 				$('#graph-page').show();
-<<<<<<< Updated upstream
 				renderArtistList(artists.split(','));
 				renderGraph(metric);
-=======
-				renderGraph(metric);
-	      console.log(artists);
->>>>>>> Stashed changes
 			}
     });
     $("#graphsubmit").click(function() {
