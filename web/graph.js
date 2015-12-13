@@ -1,19 +1,18 @@
-var metric = "tempo";
+var metric = "energy";
 window.onload = function() {
     searchArtist();
     $("#searchsubmit").click(function() {
 			if (Object.keys(picked_artists).length == 0)
 				ErrMsg("No artists inputted!")
 			else {
-				$('#setting-page').hide();
+				$('#setting-page').slideUp("slow");
 				$('#graph-page').show();
 				renderArtistList(picked_artists);
-				renderGraph('energy');
-	      console.log(artists);
+				renderGraph(metric);
 			}
     });
     $("#graphsubmit").click(function() {
-			$('#graph-page').hide();
+			$('#graph-page').slideUp("slow");
 			$('#playlist-page').show();
       passToSpotify(picked_artists);
     });
