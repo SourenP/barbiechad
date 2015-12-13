@@ -6,6 +6,7 @@ var picked_artists = {}
 
 $(document).ready(function (){
   console.log("ready")
+
   $('#back-to-settings').click(function() {
     $('#setting-page').slideDown("slow");
     $('#graph-page').slideUp("slow");
@@ -18,6 +19,9 @@ $(document).ready(function (){
   $('#graph-page').hide();
   $('#playlist-page').hide();
   $('.progress').hide();
+
+  //start with submit button disabled
+  $("#searchsubmit").prop('disabled', true);
 })
 
 $("tr").click(function(){
@@ -383,6 +387,8 @@ function searchArtist(){
 
 function addArtist(artist) {
   picked_artists[artist.label] = artist
+  //undisable the search submit button
+  $("#searchsubmit").prop('disabled', false);
   renderSearchArtists()
 }
 
@@ -395,6 +401,9 @@ function renderSearchArtists() {
 
 function deleteArtist(name) {
   delete picked_artists[name];
+  if(Object.keys(picked_artists).length == 0){
+    $("#searchsubmit").prop('disabled', true);
+  }
   renderSearchArtists()
 }
 

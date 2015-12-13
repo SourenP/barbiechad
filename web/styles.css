@@ -11,57 +11,57 @@ button.btn.btn-md.btn-danger.delete-button {
 }
 
 #searchsubmit{
-  background-color: #8BD5CB;
-  border-color: #8BD5CB;
+  background-color: #56c2b4;
+  border-color: #56c2b4;
 }
 
 #searchsubmit:hover { 
-    background-color: #5296ad;
+    background-color: #2f8378;
 }
 
 #graphsubmit{
-  background-color: #8BD5CB;
-  border-color: #8BD5CB;
+  background-color: #56c2b4;
+  border-color: #56c2b4;
 }
 
 #graphsubmit:hover { 
-    background-color: #5296ad;
+    background-color: #2f8378;
 }
 
 #searchhelp{
-  background-color: #F6CE50;
-  border-color: #F6CE50;
+  background-color: #f3bb0c;
+  border-color: #f3bb0c;
 }
 
 #searchhelp:hover { 
-    background-color: #f3bb0c;
+    background-color: #aa8308;
 }
 
 #back-to-settings{
-  background-color: #D86A9F;
-  border-color: #D86A9F;
+  background-color: #cf498a;
+  border-color: #cf498a;
 }
 
 #back-to-settings:hover { 
-  background-color: #ca357d;
+  background-color: #a12b64;
 }
 
 #back-to-graph{
-  background-color: #D86A9F;
-  border-color: #D86A9F;
+  background-color: #cf498a;
+  border-color: #cf498a;
 }
 
 #back-to-graph:hover { 
-  background-color: #ca357d;
+  background-color: #a12b64;
 }
 
 .btn-danger{
-  background-color: #D86A9F !important;
-  border-color: #D86A9F !important;
+  background-color: #cf498a !important;
+  border-color: #cf498a !important;
 }
 
 .btn-danger:hover { 
-  background-color: #ca357d !important;
+  background-color: #a12b64 !important;
 }
 
 .description-settings {
