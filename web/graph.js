@@ -176,7 +176,9 @@ function passToSpotify(picked_artists) {
 function getPlaylist() {
 	playlist = JSON.parse(localStorage.barbieChadPlaylist);
 	values = JSON.parse(localStorage.barbieChadValues);
+	metric = localStorage.barbieChadMetric;
 	$('#setting-page').slideUp("slow");
 	$('#playlist-page').show();
+	$("#metric").text(firstToUpperCase(metric));
 	populatePlaylistTable(playlist, values);
 }
