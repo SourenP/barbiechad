@@ -1,9 +1,20 @@
 var metric = "energy";
+var values = [];
+
 window.onload = function() {
     searchArtist();
+		if (localStorage.getItem("barbieChadPlaylist") !== null) {
+			var getButton = '<button type="button" id="retrieve-playlist" class="btn pull-right getPlaylist"> Retrieve Saved Playlist </button>';
+			$('#retrieve-div').empty();
+			$('#retrieve-div').append(getButton);
+		}
+    $("#headerimg").click(function() {
+    	location.reload();
+    });
+
     $("#searchsubmit").click(function() {
-			if (Object.keys(picked_artists).length == 0)
-				ErrMsg("No artists inputted!")
+			if (Object.keys(picked_artists).length === 0)
+				ErrMsg("No artists inputted!");
 			else {
 				$('#setting-page').slideUp("slow");
 				$('#graph-page').show();
@@ -16,17 +27,23 @@ window.onload = function() {
 			$('#playlist-page').show();
       passToSpotify(picked_artists);
     });
+    $('div').off('click', "button.savePlaylist").on('click', "button.savePlaylist", function() {
+    	savePlaylist();
+    });
+    $(document).off('click', "#retrieve-playlist").on('click', "#retrieve-playlist", function() {
+    	getPlaylist();
+    });
 };
 
 function renderArtistList(artists) {
-	$('#artist-list').empty()
-	var list_html = ''
-	list_html += "<h3> Artists </h3>"
-	list_html += "<ul class='list-group'>"
+	$('#artist-list').empty();
+	var list_html = '';
+	list_html += "<h3> Artists </h3>";
+	list_html += "<ul class='list-group'>";
 	for (var key in picked_artists) {
-		list_html += "<li class='list-group-item'>" + key + "</li>"
+		list_html += "<li class='list-group-item'>" + key + "</li>";
 	}
-	list_html += "</ul>"
+	list_html += "</ul>";
 	$('#artist-list').append(list_html);
 }
 
@@ -148,10 +165,18 @@ function renderGraph(metric) {
 }
 
 function passToSpotify(picked_artists) {
-    var values = [];
+    values.length = 0;
     var lines = $('#graph').highcharts().getCSV().split('\n');
     for (var i = 1; i < lines.length; i++) {
         values.push(parseFloat(lines[i].split(',')[1]));
     }
     cratePlaylist(picked_artists, metric, values);
+}
+
+function getPlaylist() {
+	playlist = JSON.parse(localStorage.barbieChadPlaylist);
+	values = JSON.parse(localStorage.barbieChadValues);
+	$('#setting-page').slideUp("slow");
+	$('#playlist-page').show();
+	populatePlaylistTable(playlist, values);
 }
