@@ -6,8 +6,6 @@ var picked_artists = {};
 var playlist = [];
 
 $(document).ready(function() {
-    console.log("ready");
-
     $('#back-to-settings').click(function() {
         $('#setting-page').slideDown("slow");
         $('#graph-page').slideUp("slow");
@@ -55,12 +53,12 @@ function cratePlaylist(artists, metric, values) {
     $('.progress-bar').css('width', '0%');
     current_width_percent = 0;
     //calculate new progress increments per track
+    artists = Object.keys(artists);
     progress_bar_increments = 100 / artists.length;
     console.log("progress increment: " + progress_bar_increments);
     //show progress bar
     $('.progress').show();
 
-    artists = Object.keys(artists);
 
     var buckets = [
         [],
