@@ -32,11 +32,13 @@
         <div class="container" id ="setting-page">
             <div class="row top-buffer shadow">
                 <div class="row">
-									<div class="col-md-6"> <h2> Step 1: Artists </h2> </div>
-									<div class="col-md-6">
-										<a data-toggle="modal" href="#HelpModal" class="btn btn-info button_back pull-right" id="searchhelp">Help</a>   
-								<div id="retrieve-div" class="button_back">
-								</div>
+									<div class="col-md-8"> <h2> Step 1: Artists </h2> </div>
+									<div class="col-md-2">
+										<a data-toggle="modal" href="#HelpModal" class="btn btn-info button_back pull-right" id="searchhelp">Help</a>
+									</div>
+									<div class="col-md-2">
+										<div id="retrieve-div" class="button_back">
+										</div>
 									</div>
 								</div>
                 <div class="description-settings">
@@ -64,7 +66,7 @@
                     </ul>
                     <div class="tooltip-wrapper mybtn" data-toggle="tooltip" data-placement="bottom" title="Query cannot be empty or redundent">
                       <button type="button" id="searchsubmit" class="btn btn-primary btn-lg btn-block">Submit</button></div>
-                    </div>   
+                    </div>
                   </div>
                 </div>
                 </div>
@@ -73,8 +75,13 @@
         <div class="container" id="graph-page">
             <div class="row top-buffer shadow">
               <div class="row">
-                <div class="col-md-10"> <h2> Step 2: Graph </h2> </div>
-                <div class="col-md-2"> <button type="button" id="back-to-settings" class="btn btn-primary button_back"><span class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span>  Back to Artists </button> </div>
+                <div class="col-md-8"> <h2> Step 2: Graph </h2> </div>
+								<div class="col-md-2">
+									<a data-toggle="modal" href="#HelpModal" class="btn btn-info button_back pull-right" id="searchhelp">Help</a>
+								</div>
+                <div class="col-md-2">
+									<button type="button" id="back-to-settings" class="btn btn-primary button_back"><span class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span>  Back to Artists </button>
+								</div>
               </div>
               <div class="row">
                 <div class="description-graph col-md-8">
@@ -110,14 +117,15 @@
           <div class="testtable row top-buffer shadow">
             <div class="row">
               <div class="col-md-6"> <h2> PLAYLIST: Ready! </h2> </div>
-							<div class="col-md-6"> 
-								<button type="button" id="back-to-graph" class="btn btn-primary button_back pull-right"> 
-									<span class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span>  
-									Back to Graph 
+							<div class="col-md-6">
+								<button type="button" id="back-to-graph" class="btn btn-primary button_back">
+									<span class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span>
+									Back to Graph
 								</button>
 								<div id="playlist-div" class="button_back">
-								<button type="button" id="save-playlist" class="btn pull-right"> Save Playlist </button> 
+								<button type="button" id="save-playlist" class="btn"> Save Playlist </button>
 								</div>
+								<a data-toggle="modal" href="#HelpModal" class="btn btn-info button_back pull-right" id="searchhelp">Help</a>
 							</div>
             </div>
             <div id="player" style="padding-right: 0px;">

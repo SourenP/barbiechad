@@ -15,7 +15,7 @@ button.btn.btn-md.btn-danger.delete-button {
   border-color: #8BD5CB;
 }
 
-#searchsubmit:hover { 
+#searchsubmit:hover {
     background-color: #5296ad;
 }
 
@@ -24,16 +24,19 @@ button.btn.btn-md.btn-danger.delete-button {
   border-color: #8BD5CB;
 }
 
-#graphsubmit:hover { 
+#graphsubmit:hover {
     background-color: #5296ad;
 }
 
 #searchhelp{
   background-color: #F6CE50;
   border-color: #F6CE50;
+  float: right;
+  margin-left: 10px;
+  margin-right: 10;
 }
 
-#searchhelp:hover { 
+#searchhelp:hover {
     background-color: #f3bb0c;
 }
 
@@ -42,7 +45,7 @@ button.btn.btn-md.btn-danger.delete-button {
   border-color: #D86A9F;
 }
 
-#back-to-settings:hover { 
+#back-to-settings:hover {
   background-color: #ca357d;
 }
 
@@ -51,7 +54,7 @@ button.btn.btn-md.btn-danger.delete-button {
   border-color: #D86A9F;
 }
 
-#back-to-graph:hover { 
+#back-to-graph:hover {
   background-color: #ca357d;
 }
 
@@ -60,7 +63,7 @@ button.btn.btn-md.btn-danger.delete-button {
   border-color: #D86A9F !important;
 }
 
-.btn-danger:hover { 
+.btn-danger:hover {
   background-color: #ca357d !important;
 }
 
@@ -161,9 +164,23 @@ div.shadow:hover {
     margin: 0 auto;
 }*/
 
-.button_back{
-  top: 38px;
+.btn.btn-primary.button_back{
   position: relative;
+  float: right;
+}
+
+#retrieve-playlist {
+  margin-left: 10px;
+  margin-right: 10px;
+  background: rgb(139, 213, 203);
+  color: white;
+}
+
+#save-playlist {
+  margin-left: 10px;
+  margin-right: 10px;
+  background: rgb(139, 213, 203);
+  color: white;
 }
 
 
