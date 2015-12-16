@@ -435,6 +435,7 @@ function deleteArtist(name) {
 function savePlaylist() {
     localStorage.barbieChadPlaylist = JSON.stringify(playlist);
     localStorage.barbieChadValues = JSON.stringify(values);
+    localStorage.barbieChadMetric = metric;
     var confirm = '<p style="color: #468847; float: right; padding-right: 15px;"> ✔ Playlist saved </p>';
     $('#playlist-div').empty();
     $('#playlist-div').append(confirm);
