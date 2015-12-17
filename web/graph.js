@@ -19,6 +19,7 @@ window.onload = function() {
 				$('#setting-page').slideUp("slow");
 				$('#graph-page').show();
 				renderArtistList(picked_artists);
+				metric = $('#metricSelect').val();
 				renderGraph(metric);
 			}
     });
